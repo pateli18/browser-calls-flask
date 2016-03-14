@@ -1,6 +1,9 @@
 # VIM stuff
 *.swp
 
+# SQLite
+*.sqlite
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
