@@ -1,4 +1,5 @@
 import unittest
+from browser_calls_flask.models import SupportTicket
 
 
 class BaseTest(unittest.TestCase):
@@ -8,3 +9,7 @@ class BaseTest(unittest.TestCase):
         self.app = app
         self.db = db
         self.client = app.test_client()
+
+    def tearDown(self):
+        SupportTicket.query.delete()
+        self.db.session.commit()

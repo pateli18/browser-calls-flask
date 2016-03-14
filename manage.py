@@ -1,6 +1,7 @@
 from flask.ext.script import Manager
 from flask.ext.migrate import Migrate, MigrateCommand
 from browser_calls_flask import app, db
+from browser_calls_flask.models import SupportTicket
 
 migrate = Migrate(app, db)
 
@@ -22,8 +23,10 @@ def test():
 
 @manager.command
 def dbseed():
-    # TODO: will be used for seeding the tests
-    pass
+    ticket1 = SupportTicket(name="John", phone_number="+15551239483",
+                            description="Got an issue while...")
+    db.session.add(ticket1)
+    db.session.commit()
 
 if __name__ == "__main__":
     manager.run()
