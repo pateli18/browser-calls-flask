@@ -35,7 +35,7 @@ class SupportTicketViewsTests(BaseTest):
         self.db.session.add(ticket1)
         self.db.session.commit()
         response = self.client.get('/dashboard')
-        self.assertIn("15551239483", str(response.data))
+        self.assertIn("+1 555-123-9483", str(response.data))
 
     def post_ticket(self, name, phone_number, description):
         data = dict(name=name, phone_number=phone_number, description=description)

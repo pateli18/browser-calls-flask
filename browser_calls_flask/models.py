@@ -1,5 +1,7 @@
 from browser_calls_flask import db
 from datetime import datetime
+import phonenumbers
+from phonenumbers import PhoneNumberFormat
 
 
 class SupportTicket(db.Model):
@@ -20,3 +22,9 @@ class SupportTicket(db.Model):
 
     def __repr__(self):
         return '<SupportTicket %s - %s>' % (self.id, self.name)
+
+    @property
+    def international_phone_number(self):
+        parsed_number = phonenumbers.parse(self.phone_number)
+        return phonenumbers.format_number(parsed_number,
+                                          PhoneNumberFormat.INTERNATIONAL)
