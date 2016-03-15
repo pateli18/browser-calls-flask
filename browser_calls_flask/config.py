@@ -22,10 +22,6 @@ class TestConfig(DefaultConfig):
     SQLALCHEMY_DATABASE_URI = 'sqlite://'
     PRESERVE_CONTEXT_ON_EXCEPTION = False
     DEBUG = True
-    TESTING = True
-    LOGIN_DISABLED = True
-    WTF_CSRF_ENABLED = False
-
 
 config_env_files = {
     'test': 'browser_calls_flask.config.TestConfig',
