@@ -6,7 +6,8 @@ from .models import SupportTicket
 
 @app.route('/')
 def root():
-    return render_template('home.html')
+    form = SupportTicketForm()
+    return render_template('ticket_form.html', form=form)
 
 
 @app.route('/tickets', methods=['GET', 'POST'])
@@ -18,3 +19,8 @@ def new_ticket():
         db.session.commit()
         return redirect('/')
     return render_template('ticket_form.html', form=form)
+
+
+@app.route('/dashboard')
+def dashboard():
+    return render_template('home.html')

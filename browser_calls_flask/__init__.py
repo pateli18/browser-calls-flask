@@ -2,12 +2,14 @@ from browser_calls_flask.config import config_env_files
 from flask import Flask
 
 from flask.ext.sqlalchemy import SQLAlchemy
+from flask_bootstrap import Bootstrap
 
 db = SQLAlchemy()
 
 
 def create_app(config_name='development', p_db=db):
     new_app = Flask(__name__)
+    Bootstrap(new_app)
     config_app(config_name, new_app)
 
     p_db.init_app(new_app)

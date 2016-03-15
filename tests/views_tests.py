@@ -4,10 +4,6 @@ from browser_calls_flask.models import SupportTicket
 
 class SupportTicketViewsTests(BaseTest):
 
-    def test_root(self):
-        response = self.client.get('/')
-        assert "Welcome" in str(response.data)
-
     def test_save_ticket(self):
         self.post_ticket(name='Neo', phone_number='42', description='Issue while destroying the Matrix')
         new_ticket = SupportTicket.query.filter_by(name='Neo').first()
