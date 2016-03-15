@@ -1,11 +1,11 @@
 from flask import render_template, redirect, flash, jsonify, request
-
 from . import app, db
 from .forms import SupportTicketForm
 from .models import SupportTicket
 from .validators import is_valid_number
 
 from twilio.util import TwilioCapability
+from twilio import twiml
 
 
 @app.route('/')
@@ -31,13 +31,13 @@ def new_ticket():
     return render_template('ticket_form.html', form=form)
 
 
-@app.route('/dashboard')
+@app.route('/dashboard', methods=['GET'])
 def dashboard():
     support_tickets = SupportTicket.query.all()
     return render_template('support_dashboard.html', support_tickets=support_tickets)
 
 
-@app.route('/support/token')
+@app.route('/support/token', methods=['GET'])
 def get_token():
     """Returns a Twilio Client token"""
     # Create a TwilioCapability object with our Twilio API credentials
@@ -61,3 +61,21 @@ def get_token():
     token = capability.generate()
 
     return jsonify({'token': token})
+
+
+@app.route('/support/call', methods=['POST'])
+def call():
+    """Returns TwiML instructions to Twilio's POST requests"""
+    response = twiml.Response()
+
+    with response.dial(callerId=app.config['TWILIO_NUMBER']) as r:
+        # If the browser sent a phoneNumber param, we know this request
+        # is a support agent trying to call a customer's phone
+        if 'phoneNumber' in request.form:
+            r.number(request.form['phoneNumber'])
+        else:
+            # Otherwise we assume this request is a customer trying
+            # to contact support from the home page
+            r.client('support_agent')
+
+    return str(response)
