@@ -23,4 +23,5 @@ def new_ticket():
 
 @app.route('/dashboard')
 def dashboard():
-    return render_template('home.html')
+    support_tickets = SupportTicket.query.all()
+    return render_template('support_dashboard.html', support_tickets=support_tickets)
