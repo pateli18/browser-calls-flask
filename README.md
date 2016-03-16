@@ -11,7 +11,7 @@ Learn how to use [Twilio Client](https://www.twilio.com/client) to make browser-
 
 This project is configured to use a **TwiML App**, which allows us to easily set the voice URLs for all Twilio phone numbers we purchase in this app.
 
-Create a new TwiML app at https://www.twilio.com/user/account/apps/add and use its `Sid` as the `TWIML_APPLICATION_SID` environment variable wherever you run this app.
+Create a new TwiML app [here] https://www.twilio.com/user/account/apps/add and use its `Sid` as the `TWIML_APPLICATION_SID` environment variable wherever you run this app.
 
 ![Creating a TwiML App](http://howtodocs.s3.amazonaws.com/call-tracking-twiml-app.gif)
 
@@ -21,9 +21,9 @@ Once you have created your TwiML app, configure your Twilio phone number to use 
 
 This project is built using the [Flask](http://flask.pocoo.org/) web framework. It runs on Python 2.7+ and Python 3.4+.
 
-To run the app locally, first clone this repository and `cd` into its directory. Then:
+1. To run the app locally, first clone this repository and `cd` into it.
 
-1. Create a new virtual environment:
+1. Create a new virtual environment.
     - If using vanilla [virtualenv](https://virtualenv.pypa.io/en/latest/):
 
         ```
@@ -37,7 +37,7 @@ To run the app locally, first clone this repository and `cd` into its directory.
         mkvirtualenv browser-calls
         ```
 
-1. Install the requirements:
+1. Install the requirements.
 
     ```
     pip install -r requirements.txt
@@ -46,15 +46,16 @@ To run the app locally, first clone this repository and `cd` into its directory.
 1. Copy the `.env.example` file to `.env`, and edit it including your credentials
    for the Twilio API (found at https://www.twilio.com/user/account/settings). You
    will also need a [Twilio Number](https://www.twilio.com/user/account/phone-numbers/incoming) and TwimL App Sid you made above.
+
 1. Run `source .env` to apply the environment variables (or even better, use [autoenv](https://github.com/kennethreitz/autoenv))
 
-1. Run the migrations with:
+1. Run the migrations.
 
     ```
     python manage.py db upgrade
     ```
 
-1. Modify seed data:
+1. Modify seed data.
 
    We have provided an example of name and phone number in the seed data. In order for
    the application to send sms notifications, you must edit this seed data providing
@@ -64,14 +65,14 @@ To run the app locally, first clone this repository and `cd` into its directory.
    [this file](https://github.com/TwilioDevEd/browser-calls-flask/blob/master/manage.py#L25)
    that is located at: `project_root/manage.py`
 
-1. Seed the database:
+1. Seed the database.
 
    ```
    python manage.py dbseed
    ```
 
 1. Start ngrok
-   
+
     To actually forward incoming calls, your development server will need to be publicly accessible.
     [We recommend using ngrok to solve this problem](https://www.twilio.com/blog/2015/09/6-awesome-reasons-to-use-ngrok-when-testing-webhooks.html).
 
@@ -80,13 +81,13 @@ To run the app locally, first clone this repository and `cd` into its directory.
    $ ngrok http 5000
    ```
 
-    Once you have started ngrok, update your TwiML app's voice URL setting to use your ngrok hostname, so it will look something like this:
+    Once you have started ngrok, update your TwiML app's voice URL setting to use your ngrok hostname. It will look something like this:
 
     ```
     http://88b37ada.ngrok.io/support/call
     ```
 
-1. Start the development server:
+1. Start the development server.
 
     ```
     python manage.py runserver
@@ -101,7 +102,7 @@ That's it!
 
 You can run the tests locally through [coverage](http://coverage.readthedocs.org/):
 
-1. Run the tests:
+1. Run the tests.
 
     ```
     $ coverage run manage.py test
