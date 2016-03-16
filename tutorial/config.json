@@ -1,6 +1,6 @@
 {
-    "title": "Learn You browser-calls-flask For Much Win",
-    "repo": "<your GitHub username>/<GitHub repo name>",
-    "description": "Thanks for writing a tutorial with Viewsaurus! This example tutorial will show you the basic functionality of Viewsaurus. Click the \"Start\" button below to see how Viewsaurus works.",
+    "title": "Browser Calls",
+    "repo": "TwilioDevEd/browser-calls-flask",
+    "description": "Learn how to use Twilio Client to make browser-to-phone and browser-to-browser calls with ease. The unsatisfied customers of the Birchwood Bicycle Polo Co. need your help!",
     "heroku": false
 }
