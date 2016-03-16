@@ -1,36 +1,312 @@
-.chapter(data-title='Your New Viewsaurus Tutorial')
-  .step(data-title='Welcome!', data-file='tutorial/config.json')
-    h2 Welcome to Viewsaurus
-
-    p Thanks for writing a Viewsaurus tutorial! If you're new to Viewsaurus, feel free to click through this brief tutorial showing you how a Viewsaurus tutorial is structured.
-
-    p The tutorial's navigation controls are located above this text. Use <i class="fa fa-fw fa-play"></i> to move to the next step of the tutorial. Use <i class="fa fa-fw fa-play fa-rotate-180"></i> to move to the previous step of the tutorial (if there is one). Use <i class="fa fa-fw fa-list"></i> to see an overview of all the steps in the tutorial.
-
-    p Let's begin by walking through the files generated for you in the `tutorial` directory with the `saurus new` command - those files are actually what is being used to show you this tutorial right now!
-
-  .step(data-title='Tutorial Configuration', data-file='tutorial/config.json')
+.chapter(data-title='Browser Calls with Twilio and Flask')
+  .step(data-file='browser_calls_flask/static/js/browser-calls.js', data-highlight='91-105')
     :markdown
-      ## Configuration
+      ## What does this thing do?
 
-      The first file we'll look at is `config.json`. This contains high-level configuration information about your tutorial. This JSON file contains several properties you can declare about your tutorial:
+      This [Flask](http://flask.pocoo.org/) web application shows how you can
+      use [Twilio Client](https://www.twilio.com/client) to make
+      browser-to-phone and browser-to-browser calls.
 
-      * `title`: This is the title of your tutorial which will show on the first page
-      * `description`: This is a string of text that will appear above the "Start" button for your tutorial.
-      * `repo`: This is the GitHub repo that your code lives in. Right now we assume all projects are hosted there, but we'll likely make this agnostic in the future.
-      * `heroku`: This indicates whether or not your project supports instant deployment with the [Heroku Button](https://blog.heroku.com/archives/2014/8/7/heroku-button)
+      ![Browser Calls home page](http://howtodocs.s3.amazonaws.com/browser-calls/browser-calls-home.png)
 
-      Now, let's take a look at the first file that contains the actual content of the tutorial, `index.jade`.
+      This application powers the support site for the Birchwood Bicycle Polo
+      Co., which sells equipment to those who play
+      ["the sport of kings."](https://www.youtube.com/watch?v=DaK9Zj3QHDY) It
+      has three main features:
 
-  .step(data-title='Step Two')
-    h2 Under Construction
+      - Unsatisfied customers can submit support tickets with their phone number
+      and their problem
+      - Support agents can call customers' phones from their browser to follow up
+      on support tickets
+      - Customers can also use their browser to speak with support agents live
+      when available
 
-    p more tutorial to come.
+      In this tutorial, we'll point out the key bits of code that make this
+      application work.
+      [Check out the project README on GitHub](https://github.com/TwilioDevEd/browser-calls-flask)
+      to see how to run the code yourself.
 
-  //- Example: include markdown file
-    .step(data-title='Step Three', data-file='', data-highlight='')
-      include:markdown three.md
+      Let's get started! Click the right arrow above to advance to the next
+      code snippet.
 
-  //- Example: include jade file (don't need file extension)
-    .step(data-title='Step Four', data-file='', data-highlight='')
-      include four
+      ---
 
+      **See also:**
+
+      * [Twilio Python Helper Library](https://github.com/twilio/twilio-python/)
+      * [Twilio Client docs](https://www.twilio.com/docs/client)
+      * [Flask docs](http://flask.pocoo.org/docs/)
+
+  .step(data-file='browser_calls_flask/forms.py', data-highlight='10-17')
+    :markdown
+      ## Submit a support ticket
+
+      The home page of our app displays a form for customers to submit support
+      tickets. We use one of Flask's community components to create forms,
+      [Flask-WTF](https://flask-wtf.readthedocs.org/en/latest/)
+      to power the page.
+
+      The `SupportTicket` model itself has just a few fields. The `international_phone_number`
+      formatter uses the
+      [python-phonenumbers](https://github.com/daviddrysdale/python-phonenumbers)
+      library.
+
+      ```
+      class SupportTicket(db.Model):
+          """ Represents a support ticket """
+          __tablename__ = "tickets"
+      
+          id = db.Column(db.Integer, primary_key=True)
+          name = db.Column(db.String, nullable=False)
+          phone_number = db.Column(db.String, nullable=False)
+          description = db.Column(db.String, nullable=False)
+          timestamp = db.Column(db.DateTime)
+
+          @property
+          def international_phone_number(self):
+              parsed_number = phonenumbers.parse(self.phone_number)
+              return phonenumbers.format_number(parsed_number, PhoneNumberFormat.INTERNATIONAL)
+      ```
+
+      ---
+
+      **See also:**
+
+      * [WTForms](https://wtforms.readthedocs.org/en/latest/)
+      * [Flask SQLAlchemy models](http://flask-sqlalchemy.pocoo.org/)
+
+  .step(data-file='browser_calls_flask/templates/support_dashboard.html', data-highlight='33-56')
+    :markdown
+      ## The support dashboard
+
+      When a support agent visits `/dashboard`, they see all the support
+      tickets which have been submitted.
+
+      ![Browser Calls support dashboard](http://howtodocs.s3.amazonaws.com/browser-calls/browser-calls-dashboard.png)
+
+      Each ticket also has a "Call Customer" button which invokes a JavaScript
+      function we wrote named `callCustomer()`. That function kicks off a Twilio
+      Client call to the phone number passed as its sole parameter.
+
+  .step(data-file='browser_calls_flask/views.py', data-highlight='35-44, 55-58')
+    :markdown
+      ## Generate a capability token
+
+      Before our users can make calls with Twilio Client in their browser, we
+      need to provide them with a capability token.
+
+      We use the [twilio-python](https://twilio-python.readthedocs.org/en/latest/)
+      helper library to generate and configure our capability tokens. To allow
+      our support agents to call the phone numbers on our tickets, we use the
+      `allow_client_outgoing()` method.
+
+      That method requires an identifier for a
+      [TwiML Application](https://www.twilio.com/help/faq/twilio-client/how-do-i-create-a-twiml-app).
+      Twilio will send a POST request to our backend `/support/call` endpoint every time a user makes a
+      Twilio Client call — the TwiML Application tells Twilio which URL to send
+      that request to.
+
+      ---
+
+      **See also:**
+
+      * [Twilio Client: Capability Tokens](https://www.twilio.com/docs/client/capability-tokens)
+      * [Generate Capability Tokens with twilio-python](https://twilio-python.readthedocs.org/en/latest/usage/token-generation.html)
+
+  .step(data-file='browser_calls_flask/static/js/browser-calls.js', data-highlight='18-29')
+    :markdown
+      ## Set up Twilio Client
+
+      To use Twilio Client in a web browser we use the
+      [twilio.js library](https://www.twilio.com/docs/client/twilio-js).
+
+      We start by retrieving a capability token from the view we defined in the
+      previous step with an AJAX request. We then enable Twilio Client
+      for this page by passing our token to `Twilio.Device.setup()`.
+
+      The `Twilio.Device.ready()` callback lets us know when the browser is
+      ready to make and receive calls.
+
+      ---
+
+      **See also:**
+
+      * [jQuery `.get()`](https://api.jquery.com/jquery.get/)
+      * [Twilio.Device.setup()](https://www.twilio.com/docs/client/device#setup)
+      * [Twilio.Device.ready()](https://www.twilio.com/docs/client/device#ready)
+
+  .step(data-file='browser_calls_flask/static/js/browser-calls.js', data-highlight='91-97')
+    :markdown
+      ## Call a customer (browser-to-phone)
+
+      When our support agent clicks "Call Customer" on a support ticket, this
+      function initiates the call.
+
+      We use `Twilio.Device.connect()` to begin a new outgoing call. Our backend
+      will tell Twilio how to handle this call, so we include a `phoneNumber`
+      parameter that we'll use in our `call` view.
+
+      Let's look at that view next.
+
+      ---
+
+      **See also:**
+
+      * [Twilio.Device.connect()](https://www.twilio.com/docs/client/device#connect)
+
+  .step(data-file='browser_calls_flask/views.py', data-highlight='61-70, 76')
+    :markdown
+      ## Connect the call to a phone number
+
+      Whenever one of our users makes a call, Twilio will send a POST request to
+      the URL we set on our TwiML Application - in this case,
+      `/support/call`.
+
+      We use [TwiML](https://www.twilio.com/docs/api/twiml) to respond to the
+      request and tell Twilio how to handle the call. Twilio will pass along the
+      `phoneNumber` parameter from the previous step in its request, which
+      we will then [Dial](https://www.twilio.com/docs/api/twiml/dial) in our TwiML.
+
+      ---
+
+      **See also:**
+
+      * [<Number> TwiML verb](https://www.twilio.com/docs/api/twiml/number)
+      * [TwiML creation with twilio-python](https://twilio-python.readthedocs.org/en/latest/usage/twiml.html)
+
+  .step(data-file='browser_calls_flask/static/js/browser-calls.js', data-highlight='47-58, 62-63')
+    :markdown
+      ## The call is live
+
+      After our `call` view responds, Twilio completes the connection between
+      our support agent's browser and the customer's phone.
+
+      We use the `Twilio.Device.connect()` callback to update some UI elements
+      and make it clear our user is in a call. This function receives a
+      [Connection](https://www.twilio.com/docs/client/connection) object,
+      which offers some additional details about the call.
+
+      ---
+
+      **See also:**
+
+      * [Twilio.Device.connect() callback](https://www.twilio.com/docs/client/device#connect-handler)
+      * [jQuery .prop()](http://api.jquery.com/prop/)
+
+  .step(data-file='browser_calls_flask/static/js/browser-calls.js', data-highlight='99-105')
+    :markdown
+      ## Call a support agent (browser-to-browser)
+
+      Support tickets are useful, but sometimes a customer needs help right now.
+      With just a little more work we let customers speak with a support agent
+      live via a browser-to-browser call.
+
+      ![Browser Calls call support](http://howtodocs.s3.amazonaws.com/browser-calls/browser-calls-call-support.png)
+
+      When a customer clicks "Call support" on the home page we again use
+      `Twilio.Device.connect()` to initiate the call. This time we don't pass
+      any additional parameters — our backend will route this call to our
+      support agent. 
+
+      ---
+
+      **See also:**
+
+      * [Twilio.Device.connect()](https://www.twilio.com/docs/client/device#connect)
+
+  .step(data-file='browser_calls_flask/views.py', data-highlight='46-50, 61-76')
+    :markdown
+      ## Connect the call to the support agent's client
+
+      To allow our support agents to accept incoming calls we use the
+      `allow_client_incoming()` method when generating their capability token,
+      passing `support_agent` as the client's name.
+
+      When Twilio sends a POST request to our `call` view, we can connect the
+      call to our support agent by responding with a
+      [<Client>](https://www.twilio.com/docs/api/twiml/client) TwiML noun and
+      the `support_agent` name.
+
+      ---
+
+      **See also:**
+
+      * [Allow Incoming Connections on Capability Tokens](https://www.twilio.com/docs/client/capability-tokens#allow-incoming-connections)
+
+  .step(data-file='browser_calls_flask/static/js/browser-calls.js', data-highlight='75-89')
+    :markdown
+      ## Answer the call
+
+      When our support agent's client receives an incoming call, it will trigger
+      the function we defined on the `Twilio.Device.incoming()` callback.
+
+      The incoming `connection` will be in a "pending" state until we invoke its
+      `.accept()` method, which we do in a function bound to the "Answer
+      call" button.
+
+      We also set a `.accept()` callback to update the UI once the call is live.
+
+      ---
+
+      **See also:**
+
+      * [Twilio.Device.incoming()](https://www.twilio.com/docs/client/device#incoming)
+      * [Twilio.Device.accept()](https://www.twilio.com/docs/client/connection#accept)
+      * [jQuery .click()](https://api.jquery.com/click/)
+
+  .step(data-file='browser_calls_flask/static/js/browser-calls.js', data-highlight='107-110, 65-73')
+    :markdown
+      ## End a call
+
+      To end a call we invoke `Twilio.Device.disconnectAll()`, which we wired
+      to the "Hang up" button in our UI.
+
+      We also define a callback function with `Twilio.Device.disconnect()`,
+      above, to reset some UI elements.
+
+      ---
+
+      **See also:**
+
+      * [Twilio.Device.disconnectAll()](https://www.twilio.com/docs/client/device#disconnect-all)
+      * [Twilio.Device.disconnect()](https://www.twilio.com/docs/client/device#disconnect)
+
+  .step(data-file='browser_calls_flask/static/js/browser-calls.js', data-highlight='36-45')
+    :markdown
+      ## Check if a support agent is available
+
+      If a customer calls support but no support agent is online, their call
+      will go unanswered. To help avoid this frustration, we display a message
+      above the "Call support" button when no agent is available:
+
+      ![Browser Calls support unavailable](http://howtodocs.s3.amazonaws.com/browser-calls/browser-calls-support-unavailable.png)
+
+      We use `Twilio.Device.presence()` to update this message when the
+      support agent's availability changes.
+
+      ---
+
+      **See also:**
+
+      * [Twilio Client .presence()](https://www.twilio.com/docs/client/device#presence)
+
+  .step
+    :markdown
+      ## Where to next?
+
+      That's it! Our Flask application now powers browser-to-phone and
+      browser-to-browser calls using Twilio Client.
+
+      If you're a Python developer working with Twilio, you might also enjoy these
+      tutorials:
+
+      [**ETA Notifications (Flask)**](https://www.twilio.com/docs/tutorials/walkthrough/eta-notifications/python/flask)
+
+      ETA notifications implementation with Python - Flask and Twilio.
+
+      [**Call Tracking (Django)**](https://www.twilio.com/docs/tutorials/walkthrough/call-tracking/python/django)
+
+      Use Twilio to track the effectiveness of your different marketing campaigns.
+
+      Thanks for checking out this tutorial! If you have any feedback to share
+      with us, we'd love to hear it. [Contact support](//www.twilio.com/help/contact) to let us know what you think.

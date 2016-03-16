@@ -1,4 +1,4 @@
-<!DOCTYPE html><html><head><title>Learn You browser-calls-flask For Much Win</title><style>body, html {
+<!DOCTYPE html><html><head><title>Browser Calls</title><style>body, html {
   height:100%;
   width:100%;
   padding:0;
@@ -9,16 +9,223 @@
 .wrapper {
   height:100%;
   width:100%;
-}</style><link rel="shortcut icon" href="//twilio.com/bundles/marketing/img/favicons/favicon.ico"><link rel="apple-touch-icon" href="//twilio.com/bundles/marketing/img/favicons/favicon_57.png"><link rel="apple-touch-icon" sizes="72x72" href="//twilio.com/bundles/marketing/img/favicons/favicon_72.png"><link rel="apple-touch-icon" sizes="114x114" href="//twilio.com/bundles/marketing/img/favicons/favicon_114.png"><link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css"><link rel="stylesheet" href="viewsaurus.css"></head><body><div class="wrapper"><div id="viewsaurus" data-title="Learn You browser-calls-flask For Much Win"><div class="saurus-panes"><div class="saurus-prose"><div class="saurus-prose-header"><div class="title-outer"><span class="step-title">Learn You browser-calls-flask For Much Win</span></div></div><div class="saurus-nav-buttons"><div class="saurus-nav-button nav-overview"><div class="saurus-nav-button-inner"><i class="fa fa-fw fa-list"></i></div><div class="nav-divider"></div></div><div class="saurus-nav-button nav-previous"><div class="saurus-nav-button-inner"><a href=""> <i class="fa fa-fw fa-play fa-rotate-180"></i></a></div><div class="nav-divider"></div></div><div class="saurus-nav-button nav-next clickable"><div class="saurus-nav-button-inner"><a href="#1"> <i class="fa fa-fw fa-play"></i></a></div></div><div class="saurus-next-title"><span class="next-title-inner"></span></div></div><div class="saurus-progress-bar"></div><div class="saurus-start"><p>Thanks for writing a tutorial with Viewsaurus! This example tutorial will show you the basic functionality of Viewsaurus. Click the &quot;Start&quot; button below to see how Viewsaurus works.</p><a href="#0">Start Tutorial</a></div><div class="saurus-content"><div data-title="Your New Viewsaurus Tutorial" class="chapter"><div data-title="Welcome!" data-file="tutorial/config.json" class="step"><h2>Welcome to Viewsaurus</h2><p>Thanks for writing a Viewsaurus tutorial! If you're new to Viewsaurus, feel free to click through this brief tutorial showing you how a Viewsaurus tutorial is structured.</p><p>The tutorial's navigation controls are located above this text. Use <i class="fa fa-fw fa-play"></i> to move to the next step of the tutorial. Use <i class="fa fa-fw fa-play fa-rotate-180"></i> to move to the previous step of the tutorial (if there is one). Use <i class="fa fa-fw fa-list"></i> to see an overview of all the steps in the tutorial.</p><p>Let's begin by walking through the files generated for you in the `tutorial` directory with the `saurus new` command - those files are actually what is being used to show you this tutorial right now!</p></div><div data-title="Tutorial Configuration" data-file="tutorial/config.json" class="step"><h2 id="configuration">Configuration</h2>
-<p>The first file we&#39;ll look at is <code>config.json</code>. This contains high-level configuration information about your tutorial. This JSON file contains several properties you can declare about your tutorial:</p>
+}</style><link rel="shortcut icon" href="//twilio.com/bundles/marketing/img/favicons/favicon.ico"><link rel="apple-touch-icon" href="//twilio.com/bundles/marketing/img/favicons/favicon_57.png"><link rel="apple-touch-icon" sizes="72x72" href="//twilio.com/bundles/marketing/img/favicons/favicon_72.png"><link rel="apple-touch-icon" sizes="114x114" href="//twilio.com/bundles/marketing/img/favicons/favicon_114.png"><link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css"><link rel="stylesheet" href="viewsaurus.css"></head><body><div class="wrapper"><div id="viewsaurus" data-title="Browser Calls"><div class="saurus-panes"><div class="saurus-prose"><div class="saurus-prose-header"><div class="title-outer"><span class="step-title">Browser Calls</span></div></div><div class="saurus-nav-buttons"><div class="saurus-nav-button nav-overview"><div class="saurus-nav-button-inner"><i class="fa fa-fw fa-list"></i></div><div class="nav-divider"></div></div><div class="saurus-nav-button nav-previous"><div class="saurus-nav-button-inner"><a href=""> <i class="fa fa-fw fa-play fa-rotate-180"></i></a></div><div class="nav-divider"></div></div><div class="saurus-nav-button nav-next clickable"><div class="saurus-nav-button-inner"><a href="#1"> <i class="fa fa-fw fa-play"></i></a></div></div><div class="saurus-next-title"><span class="next-title-inner"></span></div></div><div class="saurus-progress-bar"></div><div class="saurus-start"><p>Learn how to use Twilio Client to make browser-to-phone and browser-to-browser calls with ease. The unsatisfied customers of the Birchwood Bicycle Polo Co. need your help!</p><a href="#0">Start Tutorial</a></div><div class="saurus-content"><div data-title="Browser Calls with Twilio and Flask" class="chapter"><div data-file="browser_calls_flask/static/js/browser-calls.js" data-highlight="91-105" class="step"><h2 id="what-does-this-thing-do-">What does this thing do?</h2>
+<p>This <a href="http://flask.pocoo.org/">Flask</a> web application shows how you can
+use <a href="https://www.twilio.com/client">Twilio Client</a> to make
+browser-to-phone and browser-to-browser calls.</p>
+<p><img src="http://howtodocs.s3.amazonaws.com/browser-calls/browser-calls-home.png" alt="Browser Calls home page"></p>
+<p>This application powers the support site for the Birchwood Bicycle Polo
+Co., which sells equipment to those who play
+<a href="https://www.youtube.com/watch?v=DaK9Zj3QHDY">&quot;the sport of kings.&quot;</a> It
+has three main features:</p>
 <ul>
-<li><code>title</code>: This is the title of your tutorial which will show on the first page</li>
-<li><code>description</code>: This is a string of text that will appear above the &quot;Start&quot; button for your tutorial.</li>
-<li><code>repo</code>: This is the GitHub repo that your code lives in. Right now we assume all projects are hosted there, but we&#39;ll likely make this agnostic in the future.</li>
-<li><code>heroku</code>: This indicates whether or not your project supports instant deployment with the <a href="https://blog.heroku.com/archives/2014/8/7/heroku-button">Heroku Button</a></li>
+<li>Unsatisfied customers can submit support tickets with their phone number
+and their problem</li>
+<li>Support agents can call customers&#39; phones from their browser to follow up
+on support tickets</li>
+<li>Customers can also use their browser to speak with support agents live
+when available</li>
 </ul>
-<p>Now, let&#39;s take a look at the first file that contains the actual content of the tutorial, <code>index.jade</code>.</p>
-</div><div data-title="Step Two" class="step"><h2>Under Construction</h2><p>more tutorial to come.</p></div></div>
-<div class="saurus-files" style="display:none;"><textarea class="saurus-file" data-file="tutorial/config.json" data-mode="json">ewogICAgInRpdGxlIjogIkxlYXJuIFlvdSBicm93c2VyLWNhbGxzLWZsYXNrIEZvciBNdWNoIFdpbiIsCiAgICAicmVwbyI6ICI8eW91ciBHaXRIdWIgdXNlcm5hbWU+LzxHaXRIdWIgcmVwbyBuYW1lPiIsCiAgICAiZGVzY3JpcHRpb24iOiAiVGhhbmtzIGZvciB3cml0aW5nIGEgdHV0b3JpYWwgd2l0aCBWaWV3c2F1cnVzISBUaGlzIGV4YW1wbGUgdHV0b3JpYWwgd2lsbCBzaG93IHlvdSB0aGUgYmFzaWMgZnVuY3Rpb25hbGl0eSBvZiBWaWV3c2F1cnVzLiBDbGljayB0aGUgXCJTdGFydFwiIGJ1dHRvbiBiZWxvdyB0byBzZWUgaG93IFZpZXdzYXVydXMgd29ya3MuIiwKICAgICJoZXJva3UiOiBmYWxzZQp9</textarea>
+<p>In this tutorial, we&#39;ll point out the key bits of code that make this
+application work.
+<a href="https://github.com/TwilioDevEd/browser-calls-flask">Check out the project README on GitHub</a>
+to see how to run the code yourself.</p>
+<p>Let&#39;s get started! Click the right arrow above to advance to the next
+code snippet.</p>
+<hr>
+<p><strong>See also:</strong></p>
+<ul>
+<li><a href="https://github.com/twilio/twilio-python/">Twilio Python Helper Library</a></li>
+<li><a href="https://www.twilio.com/docs/client">Twilio Client docs</a></li>
+<li><a href="http://flask.pocoo.org/docs/">Flask docs</a></li>
+</ul>
+</div><div data-file="browser_calls_flask/forms.py" data-highlight="10-17" class="step"><h2 id="submit-a-support-ticket">Submit a support ticket</h2>
+<p>The home page of our app displays a form for customers to submit support
+tickets. We use one of Flask&#39;s community components to create forms,
+<a href="https://flask-wtf.readthedocs.org/en/latest/">Flask-WTF</a>
+to power the page.</p>
+<p>The <code>SupportTicket</code> model itself has just a few fields. The <code>international_phone_number</code>
+formatter uses the
+<a href="https://github.com/daviddrysdale/python-phonenumbers">python-phonenumbers</a>
+library.</p>
+<pre><code>class SupportTicket(db.Model):
+    &quot;&quot;&quot; Represents a support ticket &quot;&quot;&quot;
+    __tablename__ = &quot;tickets&quot;
+
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String, nullable=False)
+    phone_number = db.Column(db.String, nullable=False)
+    description = db.Column(db.String, nullable=False)
+    timestamp = db.Column(db.DateTime)
+
+    @property
+    def international_phone_number(self):
+        parsed_number = phonenumbers.parse(self.phone_number)
+        return phonenumbers.format_number(parsed_number, PhoneNumberFormat.INTERNATIONAL)
+</code></pre><hr>
+<p><strong>See also:</strong></p>
+<ul>
+<li><a href="https://wtforms.readthedocs.org/en/latest/">WTForms</a></li>
+<li><a href="http://flask-sqlalchemy.pocoo.org/">Flask SQLAlchemy models</a></li>
+</ul>
+</div><div data-file="browser_calls_flask/templates/support_dashboard.html" data-highlight="33-56" class="step"><h2 id="the-support-dashboard">The support dashboard</h2>
+<p>When a support agent visits <code>/dashboard</code>, they see all the support
+tickets which have been submitted.</p>
+<p><img src="http://howtodocs.s3.amazonaws.com/browser-calls/browser-calls-dashboard.png" alt="Browser Calls support dashboard"></p>
+<p>Each ticket also has a &quot;Call Customer&quot; button which invokes a JavaScript
+function we wrote named <code>callCustomer()</code>. That function kicks off a Twilio
+Client call to the phone number passed as its sole parameter.</p>
+</div><div data-file="browser_calls_flask/views.py" data-highlight="35-44, 55-58" class="step"><h2 id="generate-a-capability-token">Generate a capability token</h2>
+<p>Before our users can make calls with Twilio Client in their browser, we
+need to provide them with a capability token.</p>
+<p>We use the <a href="https://twilio-python.readthedocs.org/en/latest/">twilio-python</a>
+helper library to generate and configure our capability tokens. To allow
+our support agents to call the phone numbers on our tickets, we use the
+<code>allow_client_outgoing()</code> method.</p>
+<p>That method requires an identifier for a
+<a href="https://www.twilio.com/help/faq/twilio-client/how-do-i-create-a-twiml-app">TwiML Application</a>.
+Twilio will send a POST request to our backend <code>/support/call</code> endpoint every time a user makes a
+Twilio Client call — the TwiML Application tells Twilio which URL to send
+that request to.</p>
+<hr>
+<p><strong>See also:</strong></p>
+<ul>
+<li><a href="https://www.twilio.com/docs/client/capability-tokens">Twilio Client: Capability Tokens</a></li>
+<li><a href="https://twilio-python.readthedocs.org/en/latest/usage/token-generation.html">Generate Capability Tokens with twilio-python</a></li>
+</ul>
+</div><div data-file="browser_calls_flask/static/js/browser-calls.js" data-highlight="18-29" class="step"><h2 id="set-up-twilio-client">Set up Twilio Client</h2>
+<p>To use Twilio Client in a web browser we use the
+<a href="https://www.twilio.com/docs/client/twilio-js">twilio.js library</a>.</p>
+<p>We start by retrieving a capability token from the view we defined in the
+previous step with an AJAX request. We then enable Twilio Client
+for this page by passing our token to <code>Twilio.Device.setup()</code>.</p>
+<p>The <code>Twilio.Device.ready()</code> callback lets us know when the browser is
+ready to make and receive calls.</p>
+<hr>
+<p><strong>See also:</strong></p>
+<ul>
+<li><a href="https://api.jquery.com/jquery.get/">jQuery <code>.get()</code></a></li>
+<li><a href="https://www.twilio.com/docs/client/device#setup">Twilio.Device.setup()</a></li>
+<li><a href="https://www.twilio.com/docs/client/device#ready">Twilio.Device.ready()</a></li>
+</ul>
+</div><div data-file="browser_calls_flask/static/js/browser-calls.js" data-highlight="91-97" class="step"><h2 id="call-a-customer-browser-to-phone-">Call a customer (browser-to-phone)</h2>
+<p>When our support agent clicks &quot;Call Customer&quot; on a support ticket, this
+function initiates the call.</p>
+<p>We use <code>Twilio.Device.connect()</code> to begin a new outgoing call. Our backend
+will tell Twilio how to handle this call, so we include a <code>phoneNumber</code>
+parameter that we&#39;ll use in our <code>call</code> view.</p>
+<p>Let&#39;s look at that view next.</p>
+<hr>
+<p><strong>See also:</strong></p>
+<ul>
+<li><a href="https://www.twilio.com/docs/client/device#connect">Twilio.Device.connect()</a></li>
+</ul>
+</div><div data-file="browser_calls_flask/views.py" data-highlight="61-70, 76" class="step"><h2 id="connect-the-call-to-a-phone-number">Connect the call to a phone number</h2>
+<p>Whenever one of our users makes a call, Twilio will send a POST request to
+the URL we set on our TwiML Application - in this case,
+<code>/support/call</code>.</p>
+<p>We use <a href="https://www.twilio.com/docs/api/twiml">TwiML</a> to respond to the
+request and tell Twilio how to handle the call. Twilio will pass along the
+<code>phoneNumber</code> parameter from the previous step in its request, which
+we will then <a href="https://www.twilio.com/docs/api/twiml/dial">Dial</a> in our TwiML.</p>
+<hr>
+<p><strong>See also:</strong></p>
+<ul>
+<li><a href="https://www.twilio.com/docs/api/twiml/number">&lt;Number&gt; TwiML verb</a></li>
+<li><a href="https://twilio-python.readthedocs.org/en/latest/usage/twiml.html">TwiML creation with twilio-python</a></li>
+</ul>
+</div><div data-file="browser_calls_flask/static/js/browser-calls.js" data-highlight="47-58, 62-63" class="step"><h2 id="the-call-is-live">The call is live</h2>
+<p>After our <code>call</code> view responds, Twilio completes the connection between
+our support agent&#39;s browser and the customer&#39;s phone.</p>
+<p>We use the <code>Twilio.Device.connect()</code> callback to update some UI elements
+and make it clear our user is in a call. This function receives a
+<a href="https://www.twilio.com/docs/client/connection">Connection</a> object,
+which offers some additional details about the call.</p>
+<hr>
+<p><strong>See also:</strong></p>
+<ul>
+<li><a href="https://www.twilio.com/docs/client/device#connect-handler">Twilio.Device.connect() callback</a></li>
+<li><a href="http://api.jquery.com/prop/">jQuery .prop()</a></li>
+</ul>
+</div><div data-file="browser_calls_flask/static/js/browser-calls.js" data-highlight="99-105" class="step"><h2 id="call-a-support-agent-browser-to-browser-">Call a support agent (browser-to-browser)</h2>
+<p>Support tickets are useful, but sometimes a customer needs help right now.
+With just a little more work we let customers speak with a support agent
+live via a browser-to-browser call.</p>
+<p><img src="http://howtodocs.s3.amazonaws.com/browser-calls/browser-calls-call-support.png" alt="Browser Calls call support"></p>
+<p>When a customer clicks &quot;Call support&quot; on the home page we again use
+<code>Twilio.Device.connect()</code> to initiate the call. This time we don&#39;t pass
+any additional parameters — our backend will route this call to our
+support agent. </p>
+<hr>
+<p><strong>See also:</strong></p>
+<ul>
+<li><a href="https://www.twilio.com/docs/client/device#connect">Twilio.Device.connect()</a></li>
+</ul>
+</div><div data-file="browser_calls_flask/views.py" data-highlight="46-50, 61-76" class="step"><h2 id="connect-the-call-to-the-support-agent-s-client">Connect the call to the support agent&#39;s client</h2>
+<p>To allow our support agents to accept incoming calls we use the
+<code>allow_client_incoming()</code> method when generating their capability token,
+passing <code>support_agent</code> as the client&#39;s name.</p>
+<p>When Twilio sends a POST request to our <code>call</code> view, we can connect the
+call to our support agent by responding with a
+<a href="https://www.twilio.com/docs/api/twiml/client">&lt;Client&gt;</a> TwiML noun and
+the <code>support_agent</code> name.</p>
+<hr>
+<p><strong>See also:</strong></p>
+<ul>
+<li><a href="https://www.twilio.com/docs/client/capability-tokens#allow-incoming-connections">Allow Incoming Connections on Capability Tokens</a></li>
+</ul>
+</div><div data-file="browser_calls_flask/static/js/browser-calls.js" data-highlight="75-89" class="step"><h2 id="answer-the-call">Answer the call</h2>
+<p>When our support agent&#39;s client receives an incoming call, it will trigger
+the function we defined on the <code>Twilio.Device.incoming()</code> callback.</p>
+<p>The incoming <code>connection</code> will be in a &quot;pending&quot; state until we invoke its
+<code>.accept()</code> method, which we do in a function bound to the &quot;Answer
+call&quot; button.</p>
+<p>We also set a <code>.accept()</code> callback to update the UI once the call is live.</p>
+<hr>
+<p><strong>See also:</strong></p>
+<ul>
+<li><a href="https://www.twilio.com/docs/client/device#incoming">Twilio.Device.incoming()</a></li>
+<li><a href="https://www.twilio.com/docs/client/connection#accept">Twilio.Device.accept()</a></li>
+<li><a href="https://api.jquery.com/click/">jQuery .click()</a></li>
+</ul>
+</div><div data-file="browser_calls_flask/static/js/browser-calls.js" data-highlight="107-110, 65-73" class="step"><h2 id="end-a-call">End a call</h2>
+<p>To end a call we invoke <code>Twilio.Device.disconnectAll()</code>, which we wired
+to the &quot;Hang up&quot; button in our UI.</p>
+<p>We also define a callback function with <code>Twilio.Device.disconnect()</code>,
+above, to reset some UI elements.</p>
+<hr>
+<p><strong>See also:</strong></p>
+<ul>
+<li><a href="https://www.twilio.com/docs/client/device#disconnect-all">Twilio.Device.disconnectAll()</a></li>
+<li><a href="https://www.twilio.com/docs/client/device#disconnect">Twilio.Device.disconnect()</a></li>
+</ul>
+</div><div data-file="browser_calls_flask/static/js/browser-calls.js" data-highlight="36-45" class="step"><h2 id="check-if-a-support-agent-is-available">Check if a support agent is available</h2>
+<p>If a customer calls support but no support agent is online, their call
+will go unanswered. To help avoid this frustration, we display a message
+above the &quot;Call support&quot; button when no agent is available:</p>
+<p><img src="http://howtodocs.s3.amazonaws.com/browser-calls/browser-calls-support-unavailable.png" alt="Browser Calls support unavailable"></p>
+<p>We use <code>Twilio.Device.presence()</code> to update this message when the
+support agent&#39;s availability changes.</p>
+<hr>
+<p><strong>See also:</strong></p>
+<ul>
+<li><a href="https://www.twilio.com/docs/client/device#presence">Twilio Client .presence()</a></li>
+</ul>
+</div><div class="step"><h2 id="where-to-next-">Where to next?</h2>
+<p>That&#39;s it! Our Flask application now powers browser-to-phone and
+browser-to-browser calls using Twilio Client.</p>
+<p>If you&#39;re a Python developer working with Twilio, you might also enjoy these
+tutorials:</p>
+<p><a href="https://www.twilio.com/docs/tutorials/walkthrough/eta-notifications/python/flask"><strong>ETA Notifications (Flask)</strong></a></p>
+<p>ETA notifications implementation with Python - Flask and Twilio.</p>
+<p><a href="https://www.twilio.com/docs/tutorials/walkthrough/call-tracking/python/django"><strong>Call Tracking (Django)</strong></a></p>
+<p>Use Twilio to track the effectiveness of your different marketing campaigns.</p>
+<p>Thanks for checking out this tutorial! If you have any feedback to share
+with us, we&#39;d love to hear it. <a href="//www.twilio.com/help/contact">Contact support</a> to let us know what you think.</p>
+</div></div>
+<div class="saurus-files" style="display:none;"><textarea class="saurus-file" data-file="browser_calls_flask/static/js/browser-calls.js" data-mode="javascript">LyoqCiAqIFR3aWxpbyBDbGllbnQgY29uZmlndXJhdGlvbiBmb3IgdGhlIGJyb3dzZXItY2FsbHMtZGphbmdvCiAqIGV4YW1wbGUgYXBwbGljYXRpb24uCiAqLwoKLy8gU3RvcmUgc29tZSBzZWxlY3RvcnMgZm9yIGVsZW1lbnRzIHdlJ2xsIHJldXNlCnZhciBjYWxsU3RhdHVzID0gJCgiI2NhbGwtc3RhdHVzIik7CnZhciBhbnN3ZXJCdXR0b24gPSAkKCIuYW5zd2VyLWJ1dHRvbiIpOwp2YXIgY2FsbFN1cHBvcnRCdXR0b24gPSAkKCIuY2FsbC1zdXBwb3J0LWJ1dHRvbiIpOwp2YXIgaGFuZ1VwQnV0dG9uID0gJCgiLmhhbmd1cC1idXR0b24iKTsKdmFyIGNhbGxDdXN0b21lckJ1dHRvbnMgPSAkKCIuY2FsbC1jdXN0b21lci1idXR0b24iKTsKCi8qIEhlbHBlciBmdW5jdGlvbiB0byB1cGRhdGUgdGhlIGNhbGwgc3RhdHVzIGJhciAqLwpmdW5jdGlvbiB1cGRhdGVDYWxsU3RhdHVzKHN0YXR1cykgewogICAgY2FsbFN0YXR1cy50ZXh0KHN0YXR1cyk7Cn0KCi8qIEdldCBhIFR3aWxpbyBDbGllbnQgdG9rZW4gd2l0aCBhbiBBSkFYIHJlcXVlc3QgKi8KJChkb2N1bWVudCkucmVhZHkoZnVuY3Rpb24oKSB7CiAgICAkLmdldCgiL3N1cHBvcnQvdG9rZW4iLCB7Zm9yUGFnZTogd2luZG93LmxvY2F0aW9uLnBhdGhuYW1lfSwgZnVuY3Rpb24oZGF0YSkgewogICAgICAgIC8vIFNldCB1cCB0aGUgVHdpbGlvIENsaWVudCBEZXZpY2Ugd2l0aCB0aGUgdG9rZW4KICAgICAgICBUd2lsaW8uRGV2aWNlLnNldHVwKGRhdGEudG9rZW4pOwogICAgfSk7Cn0pOwoKLyogQ2FsbGJhY2sgdG8gbGV0IHVzIGtub3cgVHdpbGlvIENsaWVudCBpcyByZWFkeSAqLwpUd2lsaW8uRGV2aWNlLnJlYWR5KGZ1bmN0aW9uIChkZXZpY2UpIHsKICAgIHVwZGF0ZUNhbGxTdGF0dXMoIlJlYWR5Iik7Cn0pOwoKLyogUmVwb3J0IGFueSBlcnJvcnMgdG8gdGhlIGNhbGwgc3RhdHVzIGRpc3BsYXkgKi8KVHdpbGlvLkRldmljZS5lcnJvcihmdW5jdGlvbiAoZXJyb3IpIHsKICAgIHVwZGF0ZUNhbGxTdGF0dXMoIkVSUk9SOiAiICsgZXJyb3IubWVzc2FnZSk7Cn0pOwoKLyogQ2FsbGJhY2sgdG8gZGV0ZXJtaW5lIGlmICJzdXBwb3J0X2FnZW50IiBpcyBhdmFpbGFibGUgb3Igbm90ICovClR3aWxpby5EZXZpY2UucHJlc2VuY2UoZnVuY3Rpb24ocHJlc2VuY2VFdmVudCkgewogICAgaWYgKHByZXNlbmNlRXZlbnQuZnJvbSA9PT0gJ3N1cHBvcnRfYWdlbnQnKSB7CiAgICAgICAgaWYgKHByZXNlbmNlRXZlbnQuYXZhaWxhYmxlKSB7CiAgICAgICAgICAgICQoIiNzdXBwb3J0LXVuYXZhaWxhYmxlIikuaGlkZSgpOwogICAgICAgIH0gZWxzZSB7CiAgICAgICAgICAgICQoIiNzdXBwb3J0LXVuYXZhaWxhYmxlIikuc2hvdygpOwogICAgICAgIH0KICAgIH0KfSk7CgovKiBDYWxsYmFjayBmb3Igd2hlbiBUd2lsaW8gQ2xpZW50IGluaXRpYXRlcyBhIG5ldyBjb25uZWN0aW9uICovClR3aWxpby5EZXZpY2UuY29ubmVjdChmdW5jdGlvbiAoY29ubmVjdGlvbikgewogICAgLy8gRW5hYmxlIHRoZSBoYW5nIHVwIGJ1dHRvbiBhbmQgZGlzYWJsZSB0aGUgY2FsbCBidXR0b25zCiAgICBoYW5nVXBCdXR0b24ucHJvcCgiZGlzYWJsZWQiLCBmYWxzZSk7CiAgICBjYWxsQ3VzdG9tZXJCdXR0b25zLnByb3AoImRpc2FibGVkIiwgdHJ1ZSk7CiAgICBjYWxsU3VwcG9ydEJ1dHRvbi5wcm9wKCJkaXNhYmxlZCIsIHRydWUpOwogICAgYW5zd2VyQnV0dG9uLnByb3AoImRpc2FibGVkIiwgdHJ1ZSk7CgogICAgLy8gSWYgcGhvbmVOdW1iZXIgaXMgcGFydCBvZiB0aGUgY29ubmVjdGlvbiwgdGhpcyBpcyBhIGNhbGwgZnJvbSBhCiAgICAvLyBzdXBwb3J0IGFnZW50IHRvIGEgY3VzdG9tZXIncyBwaG9uZQogICAgaWYgKCJwaG9uZU51bWJlciIgaW4gY29ubmVjdGlvbi5tZXNzYWdlKSB7CiAgICAgICAgdXBkYXRlQ2FsbFN0YXR1cygiSW4gY2FsbCB3aXRoICIgKyBjb25uZWN0aW9uLm1lc3NhZ2UucGhvbmVOdW1iZXIpOwogICAgfSBlbHNlIHsKICAgICAgICAvLyBUaGlzIGlzIGEgY2FsbCBmcm9tIGEgd2Vic2l0ZSB1c2VyIHRvIGEgc3VwcG9ydCBhZ2VudAogICAgICAgIHVwZGF0ZUNhbGxTdGF0dXMoIkluIGNhbGwgd2l0aCBzdXBwb3J0Iik7CiAgICB9Cn0pOwoKLyogQ2FsbGJhY2sgZm9yIHdoZW4gYSBjYWxsIGVuZHMgKi8KVHdpbGlvLkRldmljZS5kaXNjb25uZWN0KGZ1bmN0aW9uKGNvbm5lY3Rpb24pIHsKICAgIC8vIERpc2FibGUgdGhlIGhhbmd1cCBidXR0b24gYW5kIGVuYWJsZSB0aGUgY2FsbCBidXR0b25zCiAgICBoYW5nVXBCdXR0b24ucHJvcCgiZGlzYWJsZWQiLCB0cnVlKTsKICAgIGNhbGxDdXN0b21lckJ1dHRvbnMucHJvcCgiZGlzYWJsZWQiLCBmYWxzZSk7CiAgICBjYWxsU3VwcG9ydEJ1dHRvbi5wcm9wKCJkaXNhYmxlZCIsIGZhbHNlKTsKCiAgICB1cGRhdGVDYWxsU3RhdHVzKCJSZWFkeSIpOwp9KTsKCi8qIENhbGxiYWNrIGZvciB3aGVuIFR3aWxpbyBDbGllbnQgcmVjZWl2ZXMgYSBuZXcgaW5jb21pbmcgY2FsbCAqLwpUd2lsaW8uRGV2aWNlLmluY29taW5nKGZ1bmN0aW9uKGNvbm5lY3Rpb24pIHsKICAgIHVwZGF0ZUNhbGxTdGF0dXMoIkluY29taW5nIHN1cHBvcnQgY2FsbCIpOwoKICAgIC8vIFNldCBhIGNhbGxiYWNrIHRvIGJlIGV4ZWN1dGVkIHdoZW4gdGhlIGNvbm5lY3Rpb24gaXMgYWNjZXB0ZWQKICAgIGNvbm5lY3Rpb24uYWNjZXB0KGZ1bmN0aW9uKCkgewogICAgICAgIHVwZGF0ZUNhbGxTdGF0dXMoIkluIGNhbGwgd2l0aCBjdXN0b21lciIpOwogICAgfSk7CgogICAgLy8gU2V0IGEgY2FsbGJhY2sgb24gdGhlIGFuc3dlciBidXR0b24gYW5kIGVuYWJsZSBpdAogICAgYW5zd2VyQnV0dG9uLmNsaWNrKGZ1bmN0aW9uKCkgewogICAgICAgIGNvbm5lY3Rpb24uYWNjZXB0KCk7CiAgICB9KTsKICAgIGFuc3dlckJ1dHRvbi5wcm9wKCJkaXNhYmxlZCIsIGZhbHNlKTsKfSk7CgovKiBDYWxsIGEgY3VzdG9tZXIgZnJvbSBhIHN1cHBvcnQgdGlja2V0ICovCmZ1bmN0aW9uIGNhbGxDdXN0b21lcihwaG9uZU51bWJlcikgewogICAgdXBkYXRlQ2FsbFN0YXR1cygiQ2FsbGluZyAiICsgcGhvbmVOdW1iZXIgKyAiLi4uIik7CgogICAgdmFyIHBhcmFtcyA9IHsicGhvbmVOdW1iZXIiOiBwaG9uZU51bWJlcn07CiAgICBUd2lsaW8uRGV2aWNlLmNvbm5lY3QocGFyYW1zKTsKfQoKLyogQ2FsbCB0aGUgc3VwcG9ydF9hZ2VudCBmcm9tIHRoZSBob21lIHBhZ2UgKi8KZnVuY3Rpb24gY2FsbFN1cHBvcnQoKSB7CiAgICB1cGRhdGVDYWxsU3RhdHVzKCJDYWxsaW5nIHN1cHBvcnQuLi4iKTsKCiAgICAvLyBPdXIgYmFja2VuZCB3aWxsIGFzc3VtZSB0aGF0IG5vIHBhcmFtcyBtZWFucyBhIGNhbGwgdG8gc3VwcG9ydF9hZ2VudAogICAgVHdpbGlvLkRldmljZS5jb25uZWN0KCk7Cn0KCi8qIEVuZCBhIGNhbGwgKi8KZnVuY3Rpb24gaGFuZ1VwKCkgewogICAgVHdpbGlvLkRldmljZS5kaXNjb25uZWN0QWxsKCk7Cn0K</textarea>
+<textarea class="saurus-file" data-file="browser_calls_flask/forms.py" data-mode="python">ZnJvbSBmbGFza193dGYgaW1wb3J0IEZvcm0KZnJvbSB3dGZvcm1zIGltcG9ydCBTdHJpbmdGaWVsZApmcm9tIHd0Zm9ybXMgaW1wb3J0IFRleHRBcmVhRmllbGQKZnJvbSB3dGZvcm1zLnZhbGlkYXRvcnMgaW1wb3J0IERhdGFSZXF1aXJlZApmcm9tIHd0Zm9ybXMudmFsaWRhdG9ycyBpbXBvcnQgVmFsaWRhdGlvbkVycm9yCgpmcm9tIC52YWxpZGF0b3JzIGltcG9ydCBpc192YWxpZF9udW1iZXIKCgpjbGFzcyBTdXBwb3J0VGlja2V0Rm9ybShGb3JtKToKICAgICAgICBuYW1lID0gU3RyaW5nRmllbGQoJ05hbWUnLCB2YWxpZGF0b3JzPVtEYXRhUmVxdWlyZWQoKV0pCiAgICAgICAgcGhvbmVfbnVtYmVyID0gU3RyaW5nRmllbGQoJ1Bob25lIE51bWJlcicsIGRlc2NyaXB0aW9uPSdNdXN0IGluY2x1ZGUgaW50ZXJuYXRpb25hbCBwcmVmaXggLSBlLmcuICsxIDU1NSA1NTUgNTU1NTUnLCB2YWxpZGF0b3JzPVtEYXRhUmVxdWlyZWQoKV0pCiAgICAgICAgZGVzY3JpcHRpb24gPSBUZXh0QXJlYUZpZWxkKCdEZXNjcmlwdGlvbicsIGRlc2NyaXB0aW9uPSdBIGRlc2NyaXB0aW9uIG9mIHlvdXIgcHJvYmxlbScsIHZhbGlkYXRvcnM9W0RhdGFSZXF1aXJlZCgpXSkKCiAgICAgICAgZGVmIHZhbGlkYXRlX3Bob25lX251bWJlcihmb3JtLCBmaWVsZCk6CiAgICAgICAgICAgIGlmIG5vdCBpc192YWxpZF9udW1iZXIoZmllbGQuZGF0YSk6CiAgICAgICAgICAgICAgICByYWlzZSBWYWxpZGF0aW9uRXJyb3IoIkludmFsaWQgcGhvbmUgbnVtYmVyISIpCg==</textarea>
+<textarea class="saurus-file" data-file="browser_calls_flask/templates/support_dashboard.html" data-mode="html">eyUgZXh0ZW5kcyAibGF5b3V0Lmh0bWwiICV9Cgp7JSBibG9jayB0aXRsZSAlfVN1cHBvcnQgRGFzaGJvYXJkeyUgZW5kYmxvY2sgdGl0bGUgJX0KCnslIGJsb2NrIGNvbnRlbnQgJX0KICA8ZGl2IGNsYXNzPSJjb250YWluZXIiPgoKICAgIDxoMj5TdXBwb3J0IFRpY2tldHM8L2gyPgoKICAgIDxwIGNsYXNzPSJsZWFkIj4KICAgICAgVGhpcyBpcyB0aGUgbGlzdCBvZiBtb3N0IHJlY2VudCBzdXBwb3J0IHRpY2tldHMuIENsaWNrIHRoZSAiQ2FsbCBjdXN0b21lciIgYnV0dG9uIHRvIHN0YXJ0IGEgcGhvbmUgY2FsbCBmcm9tIHlvdXIgYnJvd3Nlci4KICAgIDwvcD4KCiAgICA8ZGl2IGNsYXNzPSJyb3ciPgoKICAgICAgPGRpdiBjbGFzcz0iY29sLW1kLTQgY29sLW1kLXB1c2gtOCI+CiAgICAgICAgPGRpdiBjbGFzcz0icGFuZWwgcGFuZWwtcHJpbWFyeSBjbGllbnQtY29udHJvbHMiPgogICAgICAgICAgPGRpdiBjbGFzcz0icGFuZWwtaGVhZGluZyI+CiAgICAgICAgICAgIDxoMyBjbGFzcz0icGFuZWwtdGl0bGUiPk1ha2UgYSBjYWxsPC9oMz4KICAgICAgICAgIDwvZGl2PgogICAgICAgICAgPGRpdiBjbGFzcz0icGFuZWwtYm9keSI+CiAgICAgICAgICAgIDxwPjxzdHJvbmc+U3RhdHVzPC9zdHJvbmc+PC9wPgogICAgICAgICAgICA8ZGl2IGNsYXNzPSJ3ZWxsIHdlbGwtc20iIGlkPSJjYWxsLXN0YXR1cyI+CiAgICAgICAgICAgICAgQ29ubmVjdGluZyB0byBUd2lsaW8uLi4KICAgICAgICAgICAgPC9kaXY+CgogICAgICAgICAgICA8YnV0dG9uIGNsYXNzPSJidG4gYnRuLWxnIGJ0bi1zdWNjZXNzIGFuc3dlci1idXR0b24iIGRpc2FibGVkPkFuc3dlciBjYWxsPC9idXR0b24+CiAgICAgICAgICAgIDxidXR0b24gY2xhc3M9ImJ0biBidG4tbGcgYnRuLWRhbmdlciBoYW5ndXAtYnV0dG9uIiBkaXNhYmxlZCBvbmNsaWNrPSJoYW5nVXAoKSI+SGFuZyB1cDwvYnV0dG9uPgogICAgICAgICAgPC9kaXY+CiAgICAgICAgPC9kaXY+CiAgICAgIDwvZGl2PgoKICAgICAgPGRpdiBjbGFzcz0iY29sLW1kLTggY29sLW1kLXB1bGwtNCI+CiAgICAgICAgeyUgZm9yIHRpY2tldCBpbiBzdXBwb3J0X3RpY2tldHMgJX0KICAgICAgICAgIDxkaXYgY2xhc3M9InBhbmVsIHBhbmVsLWRlZmF1bHQiPgogICAgICAgICAgICA8ZGl2IGNsYXNzPSJwYW5lbC1oZWFkaW5nIj4KICAgICAgICAgICAgICA8aDMgY2xhc3M9InBhbmVsLXRpdGxlIj5UaWNrZXQgI3t7IHRpY2tldC5pZCB9fSA8c21hbGwgY2xhc3M9InB1bGwtcmlnaHQiPnt7IHRpY2tldC50aW1lc3RhbXAgfX08L3NtYWxsPjwvaDM+CiAgICAgICAgICAgIDwvZGl2PgoKICAgICAgICAgICAgPGRpdiBjbGFzcz0icGFuZWwtYm9keSI+CgogICAgICAgICAgICAgIDxkaXYgY2xhc3M9InB1bGwtcmlnaHQiPgogICAgICAgICAgICAgICAgPGJ1dHRvbiBvbmNsaWNrPSJjYWxsQ3VzdG9tZXIoJ3t7IHRpY2tldC5waG9uZV9udW1iZXIgfX0nKSIgdHlwZT0iYnV0dG9uIiBjbGFzcz0iYnRuIGJ0bi1wcmltYXJ5IGJ0bi1sZyBjYWxsLWN1c3RvbWVyLWJ1dHRvbiI+CiAgICAgICAgICAgICAgICAgIDxzcGFuIGNsYXNzPSJnbHlwaGljb24gZ2x5cGhpY29uLWVhcnBob25lIiBhcmlhLWhpZGRlbj0idHJ1ZSI+PC9zcGFuPiAgQ2FsbCBjdXN0b21lcgogICAgICAgICAgICAgICAgPC9idXR0b24+CiAgICAgICAgICAgICAgPC9kaXY+CgogICAgICAgICAgICAgIDxwPjxzdHJvbmc+TmFtZTo8L3N0cm9uZz4ge3sgdGlja2V0Lm5hbWUgfX08L3A+CiAgICAgICAgICAgICAgPHA+PHN0cm9uZz5QaG9uZSBudW1iZXI6PC9zdHJvbmc+IHt7IHRpY2tldC5pbnRlcm5hdGlvbmFsX3Bob25lX251bWJlcn19PC9wPgogICAgICAgICAgICAgIDxwPjxzdHJvbmc+RGVzY3JpcHRpb246PC9zdHJvbmc+PC9wPgogICAgICAgICAgICAgIHt7IHRpY2tldC5kZXNjcmlwdGlvbnxzYWZlIH19CgogICAgICAgICAgICA8L2Rpdj4KICAgICAgICAgIDwvZGl2PgogICAgICAgIHslIGVuZGZvciAlfQogICAgICA8L2Rpdj4KCiAgICA8L2Rpdj4KICA8L2Rpdj4KeyUgZW5kYmxvY2sgJX0K</textarea>
+<textarea class="saurus-file" data-file="browser_calls_flask/views.py" data-mode="python">ZnJvbSBmbGFzayBpbXBvcnQgcmVuZGVyX3RlbXBsYXRlLCBmbGFzaCwganNvbmlmeSwgcmVxdWVzdApmcm9tIC4gaW1wb3J0IGFwcCwgZGIKZnJvbSAuZm9ybXMgaW1wb3J0IFN1cHBvcnRUaWNrZXRGb3JtCmZyb20gLm1vZGVscyBpbXBvcnQgU3VwcG9ydFRpY2tldAoKZnJvbSB0d2lsaW8udXRpbCBpbXBvcnQgVHdpbGlvQ2FwYWJpbGl0eQpmcm9tIHR3aWxpbyBpbXBvcnQgdHdpbWwKCgpAYXBwLnJvdXRlKCcvJykKZGVmIHJvb3QoKToKICAgIGZvcm0gPSBTdXBwb3J0VGlja2V0Rm9ybSgpCiAgICByZXR1cm4gcmVuZGVyX3RlbXBsYXRlKCdob21lLmh0bWwnLCBmb3JtPWZvcm0pCgoKQGFwcC5yb3V0ZSgnL3RpY2tldHMnLCBtZXRob2RzPVsnR0VUJywgJ1BPU1QnXSkKZGVmIG5ld190aWNrZXQoKToKICAgIHN1Y2Nlc3NfbWVzc2FnZSA9ICJZb3VyIHRpY2tldCB3YXMgc3VibWl0dGVkISBBbiBhZ2VudCB3aWxsIGNhbGwgeW91IHNvb24uIgogICAgZm9ybSA9IFN1cHBvcnRUaWNrZXRGb3JtKCkKCiAgICBpZiBmb3JtLnZhbGlkYXRlX29uX3N1Ym1pdCgpOgogICAgICAgIHRpY2tldCA9IFN1cHBvcnRUaWNrZXQoKipmb3JtLmRhdGEpCiAgICAgICAgZGIuc2Vzc2lvbi5hZGQodGlja2V0KQogICAgICAgIGRiLnNlc3Npb24uY29tbWl0KCkKICAgICAgICBmbGFzaChzdWNjZXNzX21lc3NhZ2UpCiAgICByZXR1cm4gcmVuZGVyX3RlbXBsYXRlKCdob21lLmh0bWwnLCBmb3JtPWZvcm0pCgoKQGFwcC5yb3V0ZSgnL2Rhc2hib2FyZCcsIG1ldGhvZHM9WydHRVQnXSkKZGVmIGRhc2hib2FyZCgpOgogICAgc3VwcG9ydF90aWNrZXRzID0gU3VwcG9ydFRpY2tldC5xdWVyeS5hbGwoKQogICAgcmV0dXJuIHJlbmRlcl90ZW1wbGF0ZSgnc3VwcG9ydF9kYXNoYm9hcmQuaHRtbCcsIHN1cHBvcnRfdGlja2V0cz1zdXBwb3J0X3RpY2tldHMpCgoKQGFwcC5yb3V0ZSgnL3N1cHBvcnQvdG9rZW4nLCBtZXRob2RzPVsnR0VUJ10pCmRlZiBnZXRfdG9rZW4oKToKICAgICIiIlJldHVybnMgYSBUd2lsaW8gQ2xpZW50IHRva2VuIiIiCiAgICAjIENyZWF0ZSBhIFR3aWxpb0NhcGFiaWxpdHkgb2JqZWN0IHdpdGggb3VyIFR3aWxpbyBBUEkgY3JlZGVudGlhbHMKICAgIGNhcGFiaWxpdHkgPSBUd2lsaW9DYXBhYmlsaXR5KAogICAgICAgIGFwcC5jb25maWdbJ1RXSUxJT19BQ0NPVU5UX1NJRCddLAogICAgICAgIGFwcC5jb25maWdbJ1RXSUxJT19BVVRIX1RPS0VOJ10pCgogICAgIyBBbGxvdyBvdXIgdXNlcnMgdG8gbWFrZSBvdXRnb2luZyBjYWxscyB3aXRoIFR3aWxpbyBDbGllbnQKICAgIGNhcGFiaWxpdHkuYWxsb3dfY2xpZW50X291dGdvaW5nKGFwcC5jb25maWdbJ1RXSU1MX0FQUExJQ0FUSU9OX1NJRCddKQoKICAgICMgSWYgdGhlIHVzZXIgaXMgb24gdGhlIHN1cHBvcnQgZGFzaGJvYXJkIHBhZ2UsIHdlIGFsbG93IHRoZW0gdG8gYWNjZXB0CiAgICAjIGluY29taW5nIGNhbGxzIHRvICJzdXBwb3J0X2FnZW50IgogICAgIyAoaW4gYSByZWFsIGFwcCB3ZSB3b3VsZCBhbHNvIHJlcXVpcmUgdGhlIHVzZXIgdG8gYmUgYXV0aGVudGljYXRlZCkKICAgIGlmIHJlcXVlc3QuYXJncy5nZXQoJ2ZvclBhZ2UnKSA9PSAnL2Rhc2hib2FyZCc6CiAgICAgICAgY2FwYWJpbGl0eS5hbGxvd19jbGllbnRfaW5jb21pbmcoJ3N1cHBvcnRfYWdlbnQnKQogICAgZWxzZToKICAgICAgICAjIE90aGVyd2lzZSB3ZSBnaXZlIHRoZW0gYSBuYW1lIG9mICJjdXN0b21lciIKICAgICAgICBjYXBhYmlsaXR5LmFsbG93X2NsaWVudF9pbmNvbWluZygnY3VzdG9tZXInKQoKICAgICMgR2VuZXJhdGUgdGhlIGNhcGFiaWxpdHkgdG9rZW4KICAgIHRva2VuID0gY2FwYWJpbGl0eS5nZW5lcmF0ZSgpCgogICAgcmV0dXJuIGpzb25pZnkoeyd0b2tlbic6IHRva2VufSkKCgpAYXBwLnJvdXRlKCcvc3VwcG9ydC9jYWxsJywgbWV0aG9kcz1bJ1BPU1QnXSkKZGVmIGNhbGwoKToKICAgICIiIlJldHVybnMgVHdpTUwgaW5zdHJ1Y3Rpb25zIHRvIFR3aWxpbydzIFBPU1QgcmVxdWVzdHMiIiIKICAgIHJlc3BvbnNlID0gdHdpbWwuUmVzcG9uc2UoKQoKICAgIHdpdGggcmVzcG9uc2UuZGlhbChjYWxsZXJJZD1hcHAuY29uZmlnWydUV0lMSU9fTlVNQkVSJ10pIGFzIGRpYWw6CiAgICAgICAgIyBJZiB0aGUgYnJvd3NlciBzZW50IGEgcGhvbmVOdW1iZXIgcGFyYW0sIHdlIGtub3cgdGhpcyByZXF1ZXN0CiAgICAgICAgIyBpcyBhIHN1cHBvcnQgYWdlbnQgdHJ5aW5nIHRvIGNhbGwgYSBjdXN0b21lcidzIHBob25lCiAgICAgICAgaWYgJ3Bob25lTnVtYmVyJyBpbiByZXF1ZXN0LmZvcm06CiAgICAgICAgICAgIGRpYWwubnVtYmVyKHJlcXVlc3QuZm9ybVsncGhvbmVOdW1iZXInXSkKICAgICAgICBlbHNlOgogICAgICAgICAgICAjIE90aGVyd2lzZSB3ZSBhc3N1bWUgdGhpcyByZXF1ZXN0IGlzIGEgY3VzdG9tZXIgdHJ5aW5nCiAgICAgICAgICAgICMgdG8gY29udGFjdCBzdXBwb3J0IGZyb20gdGhlIGhvbWUgcGFnZQogICAgICAgICAgICBkaWFsLmNsaWVudCgnc3VwcG9ydF9hZ2VudCcpCgogICAgcmV0dXJuIHN0cihyZXNwb25zZSkK</textarea>
 </div>
-</div><div class="saurus-overview"><ul></ul></div></div><div class="saurus-code"><div class="file-path"><span class="crumb-container"></span><i class="fa fa-fw fa-folder"></i></div><div class="saurus-editor"></div></div><div class="saurus-explorer"><div class="saurus-file-list"></div><a href="https://github.com/&lt;your GitHub username&gt;/&lt;GitHub repo name&gt;" target="_blank" class="explorer-get-code"> <i class="fa fa-lg fa-github-square"> </i>View Code on GitHub</a></div></div></div></div><script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/backbone.js/1.1.2/backbone-min.js"></script><script src="ace/ace.js"></script><script src="ace/theme-monokai.js"></script><script src="viewsaurus.js"></script></body></html>
+</div><div class="saurus-overview"><ul></ul></div></div><div class="saurus-code"><div class="file-path"><span class="crumb-container"></span><i class="fa fa-fw fa-folder"></i></div><div class="saurus-editor"></div></div><div class="saurus-explorer"><div class="saurus-file-list"></div><a href="https://github.com/TwilioDevEd/browser-calls-flask" target="_blank" class="explorer-get-code"> <i class="fa fa-lg fa-github-square"> </i>View Code on GitHub</a></div></div></div></div><script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/backbone.js/1.1.2/backbone-min.js"></script><script src="ace/ace.js"></script><script src="ace/theme-monokai.js"></script><script src="viewsaurus.js"></script></body></html>
