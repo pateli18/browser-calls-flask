@@ -63,14 +63,14 @@ def call():
     """Returns TwiML instructions to Twilio's POST requests"""
     response = twiml.Response()
 
-    with response.dial(callerId=app.config['TWILIO_NUMBER']) as r:
+    with response.dial(callerId=app.config['TWILIO_NUMBER']) as dial:
         # If the browser sent a phoneNumber param, we know this request
         # is a support agent trying to call a customer's phone
         if 'phoneNumber' in request.form:
-            r.number(request.form['phoneNumber'])
+            dial.number(request.form['phoneNumber'])
         else:
             # Otherwise we assume this request is a customer trying
             # to contact support from the home page
-            r.client('support_agent')
+            dial.client('support_agent')
 
     return str(response)
