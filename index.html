@@ -9,7 +9,7 @@
 .wrapper {
   height:100%;
   width:100%;
-}</style><link rel="shortcut icon" href="//twilio.com/bundles/marketing/img/favicons/favicon.ico"><link rel="apple-touch-icon" href="//twilio.com/bundles/marketing/img/favicons/favicon_57.png"><link rel="apple-touch-icon" sizes="72x72" href="//twilio.com/bundles/marketing/img/favicons/favicon_72.png"><link rel="apple-touch-icon" sizes="114x114" href="//twilio.com/bundles/marketing/img/favicons/favicon_114.png"><link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css"><link rel="stylesheet" href="viewsaurus.css"></head><body><div class="wrapper"><div id="viewsaurus" data-title="Browser Calls"><div class="saurus-panes"><div class="saurus-prose"><div class="saurus-prose-header"><div class="title-outer"><span class="step-title">Browser Calls</span></div></div><div class="saurus-nav-buttons"><div class="saurus-nav-button nav-overview"><div class="saurus-nav-button-inner"><i class="fa fa-fw fa-list"></i></div><div class="nav-divider"></div></div><div class="saurus-nav-button nav-previous"><div class="saurus-nav-button-inner"><a href=""> <i class="fa fa-fw fa-play fa-rotate-180"></i></a></div><div class="nav-divider"></div></div><div class="saurus-nav-button nav-next clickable"><div class="saurus-nav-button-inner"><a href="#1"> <i class="fa fa-fw fa-play"></i></a></div></div><div class="saurus-next-title"><span class="next-title-inner"></span></div></div><div class="saurus-progress-bar"></div><div class="saurus-start"><p>Learn how to use Twilio Client to make browser-to-phone and browser-to-browser calls with ease. The unsatisfied customers of the Birchwood Bicycle Polo Co. need your help!</p><a href="#0">Start Tutorial</a></div><div class="saurus-content"><div data-title="Browser Calls with Twilio and Flask" class="chapter"><div data-file="browser_calls_flask/static/js/browser-calls.js" data-highlight="91-105" class="step"><h2 id="what-does-this-thing-do-">What does this thing do?</h2>
+}</style><link rel="shortcut icon" href="//twilio.com/bundles/marketing/img/favicons/favicon.ico"><link rel="apple-touch-icon" href="//twilio.com/bundles/marketing/img/favicons/favicon_57.png"><link rel="apple-touch-icon" sizes="72x72" href="//twilio.com/bundles/marketing/img/favicons/favicon_72.png"><link rel="apple-touch-icon" sizes="114x114" href="//twilio.com/bundles/marketing/img/favicons/favicon_114.png"><link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css"><link rel="stylesheet" href="viewsaurus.css"></head><body><div class="wrapper"><div id="viewsaurus" data-title="Browser Calls"><div class="saurus-panes"><div class="saurus-prose"><div class="saurus-prose-header"><div class="title-outer"><span class="step-title">Browser Calls</span></div></div><div class="saurus-nav-buttons"><div class="saurus-nav-button nav-overview"><div class="saurus-nav-button-inner"><i class="fa fa-fw fa-list"></i></div><div class="nav-divider"></div></div><div class="saurus-nav-button nav-previous"><div class="saurus-nav-button-inner"><a href=""> <i class="fa fa-fw fa-play fa-rotate-180"></i></a></div><div class="nav-divider"></div></div><div class="saurus-nav-button nav-next clickable"><div class="saurus-nav-button-inner"><a href="#1"> <i class="fa fa-fw fa-play"></i></a></div></div><div class="saurus-next-title"><span class="next-title-inner"></span></div></div><div class="saurus-progress-bar"></div><div class="saurus-start"><p>Learn how to use Twilio Client to make browser-to-phone and browser-to-browser calls with ease. The unsatisfied customers of the Birchwood Bicycle Polo Co. need your help!</p><a href="#0">Start Tutorial</a></div><div class="saurus-content"><div data-title="Browser Calls with Twilio and Flask" class="chapter"><div data-file="browser_calls_flask/static/js/browser-calls.js" data-highlight="91-105" class="step"><h2 id="what-does-this-thing-do-">What Does This Thing do?</h2>
 <p>This <a href="http://flask.pocoo.org/">Flask</a> web application shows how you can
 use <a href="https://www.twilio.com/client">Twilio Client</a> to make
 browser-to-phone and browser-to-browser calls.</p>
@@ -39,7 +39,7 @@ code snippet.</p>
 <li><a href="https://www.twilio.com/docs/client">Twilio Client docs</a></li>
 <li><a href="http://flask.pocoo.org/docs/">Flask docs</a></li>
 </ul>
-</div><div data-file="browser_calls_flask/forms.py" data-highlight="10-17" class="step"><h2 id="submit-a-support-ticket">Submit a support ticket</h2>
+</div><div data-file="browser_calls_flask/forms.py" data-highlight="10-17" class="step"><h2 id="submit-a-support-ticket">Submit a Support Ticket</h2>
 <p>The home page of our app displays a form for customers to submit support
 tickets. We use one of Flask&#39;s community components to create forms,
 <a href="https://flask-wtf.readthedocs.org/en/latest/">Flask-WTF</a>
@@ -68,16 +68,16 @@ library.</p>
 <li><a href="https://wtforms.readthedocs.org/en/latest/">WTForms</a></li>
 <li><a href="http://flask-sqlalchemy.pocoo.org/">Flask SQLAlchemy models</a></li>
 </ul>
-</div><div data-file="browser_calls_flask/templates/support_dashboard.html" data-highlight="33-56" class="step"><h2 id="the-support-dashboard">The support dashboard</h2>
-<p>When a support agent visits <code>/dashboard</code>, they see all the support
-tickets which have been submitted.</p>
+</div><div data-file="browser_calls_flask/templates/support_dashboard.html" data-highlight="33-56" class="step"><h2 id="the-support-dashboard">The Support Dashboard</h2>
+<p>When a support agent visits the <code>/dashboard</code>, they see all of the support
+tickets that have been submitted.</p>
 <p><img src="http://howtodocs.s3.amazonaws.com/browser-calls/browser-calls-dashboard.png" alt="Browser Calls support dashboard"></p>
 <p>Each ticket also has a &quot;Call Customer&quot; button which invokes a JavaScript
 function we wrote named <code>callCustomer()</code>. That function kicks off a Twilio
 Client call to the phone number passed as its sole parameter.</p>
-</div><div data-file="browser_calls_flask/views.py" data-highlight="35-44, 55-58" class="step"><h2 id="generate-a-capability-token">Generate a capability token</h2>
+</div><div data-file="browser_calls_flask/views.py" data-highlight="35-44, 55-58" class="step"><h2 id="generate-a-capability-token">Generate a Capability Token</h2>
 <p>Before our users can make calls with Twilio Client in their browser, we
-need to provide them with a capability token.</p>
+need to provide them a capability token.</p>
 <p>We use the <a href="https://twilio-python.readthedocs.org/en/latest/">twilio-python</a>
 helper library to generate and configure our capability tokens. To allow
 our support agents to call the phone numbers on our tickets, we use the
@@ -85,7 +85,7 @@ our support agents to call the phone numbers on our tickets, we use the
 <p>That method requires an identifier for a
 <a href="https://www.twilio.com/help/faq/twilio-client/how-do-i-create-a-twiml-app">TwiML Application</a>.
 Twilio will send a POST request to our backend <code>/support/call</code> endpoint every time a user makes a
-Twilio Client call — the TwiML Application tells Twilio which URL to send
+Twilio Client call. The TwiML Application tells Twilio which URL to send
 that request to.</p>
 <hr>
 <p><strong>See also:</strong></p>
@@ -96,9 +96,9 @@ that request to.</p>
 </div><div data-file="browser_calls_flask/static/js/browser-calls.js" data-highlight="18-29" class="step"><h2 id="set-up-twilio-client">Set up Twilio Client</h2>
 <p>To use Twilio Client in a web browser we use the
 <a href="https://www.twilio.com/docs/client/twilio-js">twilio.js library</a>.</p>
-<p>We start by retrieving a capability token from the view we defined in the
-previous step with an AJAX request. We then enable Twilio Client
-for this page by passing our token to <code>Twilio.Device.setup()</code>.</p>
+<p>We start by retrieving the capability token from the view we defined in the
+previous step with an AJAX request. We then enable the Twilio Client
+for this page passing our token as a parameter to <code>Twilio.Device.setup()</code>.</p>
 <p>The <code>Twilio.Device.ready()</code> callback lets us know when the browser is
 ready to make and receive calls.</p>
 <hr>
@@ -108,11 +108,11 @@ ready to make and receive calls.</p>
 <li><a href="https://www.twilio.com/docs/client/device#setup">Twilio.Device.setup()</a></li>
 <li><a href="https://www.twilio.com/docs/client/device#ready">Twilio.Device.ready()</a></li>
 </ul>
-</div><div data-file="browser_calls_flask/static/js/browser-calls.js" data-highlight="91-97" class="step"><h2 id="call-a-customer-browser-to-phone-">Call a customer (browser-to-phone)</h2>
+</div><div data-file="browser_calls_flask/static/js/browser-calls.js" data-highlight="91-97" class="step"><h2 id="call-a-customer-browser-to-phone-">Call a Customer (browser-to-phone)</h2>
 <p>When our support agent clicks &quot;Call Customer&quot; on a support ticket, this
 function initiates the call.</p>
 <p>We use <code>Twilio.Device.connect()</code> to begin a new outgoing call. Our backend
-will tell Twilio how to handle this call, so we include a <code>phoneNumber</code>
+will tell Twilio how to handle this call. We therefore include a <code>phoneNumber</code>
 parameter that we&#39;ll use in our <code>call</code> view.</p>
 <p>Let&#39;s look at that view next.</p>
 <hr>
@@ -120,51 +120,51 @@ parameter that we&#39;ll use in our <code>call</code> view.</p>
 <ul>
 <li><a href="https://www.twilio.com/docs/client/device#connect">Twilio.Device.connect()</a></li>
 </ul>
-</div><div data-file="browser_calls_flask/views.py" data-highlight="61-70, 76" class="step"><h2 id="connect-the-call-to-a-phone-number">Connect the call to a phone number</h2>
+</div><div data-file="browser_calls_flask/views.py" data-highlight="61-70, 76" class="step"><h2 id="connect-the-call-to-a-phone-number">Connect the Call to a Phone Number</h2>
 <p>Whenever one of our users makes a call, Twilio will send a POST request to
-the URL we set on our TwiML Application - in this case,
+the URL we set on our TwiML Application - in this example it&#39;s
 <code>/support/call</code>.</p>
 <p>We use <a href="https://www.twilio.com/docs/api/twiml">TwiML</a> to respond to the
-request and tell Twilio how to handle the call. Twilio will pass along the
-<code>phoneNumber</code> parameter from the previous step in its request, which
-we will then <a href="https://www.twilio.com/docs/api/twiml/dial">Dial</a> in our TwiML.</p>
+request and tell Twilio how to handle the call. Twilio will pass the
+<code>phoneNumber</code> parameter, from the previous step, along its request. We
+will then <a href="https://www.twilio.com/docs/api/twiml/dial">Dial</a> in our TwiML.</p>
 <hr>
 <p><strong>See also:</strong></p>
 <ul>
 <li><a href="https://www.twilio.com/docs/api/twiml/number">&lt;Number&gt; TwiML verb</a></li>
 <li><a href="https://twilio-python.readthedocs.org/en/latest/usage/twiml.html">TwiML creation with twilio-python</a></li>
 </ul>
-</div><div data-file="browser_calls_flask/static/js/browser-calls.js" data-highlight="47-58, 62-63" class="step"><h2 id="the-call-is-live">The call is live</h2>
+</div><div data-file="browser_calls_flask/static/js/browser-calls.js" data-highlight="47-58, 62-63" class="step"><h2 id="the-call-is-live">The Call Is Live</h2>
 <p>After our <code>call</code> view responds, Twilio completes the connection between
 our support agent&#39;s browser and the customer&#39;s phone.</p>
 <p>We use the <code>Twilio.Device.connect()</code> callback to update some UI elements
-and make it clear our user is in a call. This function receives a
-<a href="https://www.twilio.com/docs/client/connection">Connection</a> object,
-which offers some additional details about the call.</p>
+and make it clear that our user is on a call. This function receives a
+<a href="https://www.twilio.com/docs/client/connection">Connection</a> object
+that offers some additional details about the call.</p>
 <hr>
 <p><strong>See also:</strong></p>
 <ul>
 <li><a href="https://www.twilio.com/docs/client/device#connect-handler">Twilio.Device.connect() callback</a></li>
 <li><a href="http://api.jquery.com/prop/">jQuery .prop()</a></li>
 </ul>
-</div><div data-file="browser_calls_flask/static/js/browser-calls.js" data-highlight="99-105" class="step"><h2 id="call-a-support-agent-browser-to-browser-">Call a support agent (browser-to-browser)</h2>
+</div><div data-file="browser_calls_flask/static/js/browser-calls.js" data-highlight="99-105" class="step"><h2 id="call-a-support-agent-browser-to-browser-">Call a Support Agent (browser-to-browser)</h2>
 <p>Support tickets are useful, but sometimes a customer needs help right now.
-With just a little more work we let customers speak with a support agent
+With just a little more work we let customers talk to a support agent
 live via a browser-to-browser call.</p>
 <p><img src="http://howtodocs.s3.amazonaws.com/browser-calls/browser-calls-call-support.png" alt="Browser Calls call support"></p>
 <p>When a customer clicks &quot;Call support&quot; on the home page we again use
 <code>Twilio.Device.connect()</code> to initiate the call. This time we don&#39;t pass
 any additional parameters — our backend will route this call to our
-support agent. </p>
+support agent.</p>
 <hr>
 <p><strong>See also:</strong></p>
 <ul>
 <li><a href="https://www.twilio.com/docs/client/device#connect">Twilio.Device.connect()</a></li>
 </ul>
-</div><div data-file="browser_calls_flask/views.py" data-highlight="46-50, 61-76" class="step"><h2 id="connect-the-call-to-the-support-agent-s-client">Connect the call to the support agent&#39;s client</h2>
+</div><div data-file="browser_calls_flask/views.py" data-highlight="46-50, 61-76" class="step"><h2 id="connect-the-call-to-the-support-agent">Connect the Call to the Support Agent</h2>
 <p>To allow our support agents to accept incoming calls we use the
-<code>allow_client_incoming()</code> method when generating their capability token,
-passing <code>support_agent</code> as the client&#39;s name.</p>
+<code>allow_client_incoming()</code> method when generating their capability token.
+We have to also pass <code>support_agent</code> as the client&#39;s name to this method.</p>
 <p>When Twilio sends a POST request to our <code>call</code> view, we can connect the
 call to our support agent by responding with a
 <a href="https://www.twilio.com/docs/api/twiml/client">&lt;Client&gt;</a> TwiML noun and
@@ -174,11 +174,11 @@ the <code>support_agent</code> name.</p>
 <ul>
 <li><a href="https://www.twilio.com/docs/client/capability-tokens#allow-incoming-connections">Allow Incoming Connections on Capability Tokens</a></li>
 </ul>
-</div><div data-file="browser_calls_flask/static/js/browser-calls.js" data-highlight="75-89" class="step"><h2 id="answer-the-call">Answer the call</h2>
+</div><div data-file="browser_calls_flask/static/js/browser-calls.js" data-highlight="75-89" class="step"><h2 id="answer-the-call">Answer The Call</h2>
 <p>When our support agent&#39;s client receives an incoming call, it will trigger
 the function we defined on the <code>Twilio.Device.incoming()</code> callback.</p>
-<p>The incoming <code>connection</code> will be in a &quot;pending&quot; state until we invoke its
-<code>.accept()</code> method, which we do in a function bound to the &quot;Answer
+<p>The incoming <code>connection</code> will be &quot;pending&quot; until we invoke its
+<code>.accept()</code> method. This is done in a function bound to the &quot;Answer
 call&quot; button.</p>
 <p>We also set a <code>.accept()</code> callback to update the UI once the call is live.</p>
 <hr>
@@ -188,8 +188,8 @@ call&quot; button.</p>
 <li><a href="https://www.twilio.com/docs/client/connection#accept">Twilio.Device.accept()</a></li>
 <li><a href="https://api.jquery.com/click/">jQuery .click()</a></li>
 </ul>
-</div><div data-file="browser_calls_flask/static/js/browser-calls.js" data-highlight="107-110, 65-73" class="step"><h2 id="end-a-call">End a call</h2>
-<p>To end a call we invoke <code>Twilio.Device.disconnectAll()</code>, which we wired
+</div><div data-file="browser_calls_flask/static/js/browser-calls.js" data-highlight="107-110, 65-73" class="step"><h2 id="ending-a-call">Ending a call</h2>
+<p>To end the call we invoke <code>Twilio.Device.disconnectAll()</code>, which we wired
 to the &quot;Hang up&quot; button in our UI.</p>
 <p>We also define a callback function with <code>Twilio.Device.disconnect()</code>,
 above, to reset some UI elements.</p>
@@ -201,8 +201,8 @@ above, to reset some UI elements.</p>
 </ul>
 </div><div data-file="browser_calls_flask/static/js/browser-calls.js" data-highlight="36-45" class="step"><h2 id="check-if-a-support-agent-is-available">Check if a support agent is available</h2>
 <p>If a customer calls support but no support agent is online, their call
-will go unanswered. To help avoid this frustration, we display a message
-above the &quot;Call support&quot; button when no agent is available:</p>
+will go unanswered. To avoid this frustration, when no agent is available,
+we display a message above the &quot;Call support&quot; button.</p>
 <p><img src="http://howtodocs.s3.amazonaws.com/browser-calls/browser-calls-support-unavailable.png" alt="Browser Calls support unavailable"></p>
 <p>We use <code>Twilio.Device.presence()</code> to update this message when the
 support agent&#39;s availability changes.</p>
@@ -211,7 +211,7 @@ support agent&#39;s availability changes.</p>
 <ul>
 <li><a href="https://www.twilio.com/docs/client/device#presence">Twilio Client .presence()</a></li>
 </ul>
-</div><div class="step"><h2 id="where-to-next-">Where to next?</h2>
+</div><div class="step"><h2 id="where-to-next-">Where To Next?</h2>
 <p>That&#39;s it! Our Flask application now powers browser-to-phone and
 browser-to-browser calls using Twilio Client.</p>
 <p>If you&#39;re a Python developer working with Twilio, you might also enjoy these
