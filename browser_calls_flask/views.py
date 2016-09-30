@@ -3,7 +3,7 @@ from . import app, db
 from .forms import SupportTicketForm
 from .models import SupportTicket
 
-from twilio.util import TwilioCapability
+from twilio.jwt.client import CapabilityToken
 from twilio import twiml
 
 
@@ -36,7 +36,7 @@ def dashboard():
 def get_token():
     """Returns a Twilio Client token"""
     # Create a TwilioCapability object with our Twilio API credentials
-    capability = TwilioCapability(
+    capability = CapabilityToken(
         app.config['TWILIO_ACCOUNT_SID'],
         app.config['TWILIO_AUTH_TOKEN'])
 
