@@ -60,7 +60,7 @@ class TwilioTokenTests(BaseTest):
         mock_capability.generate.return_value = 'abc123'
 
         # When
-        with patch('browser_calls_flask.views.CapabilityToken', return_value=mock_capability) as mock:
+        with patch('browser_calls_flask.views.ClientCapabilityToken', return_value=mock_capability) as mock:
             response = self.client.get('/support/token', query_string={'forPage': '/'})
 
         # Then
@@ -77,7 +77,7 @@ class TwilioTokenTests(BaseTest):
         mock_capability.generate.return_value = 'abc123'
 
         # When
-        with patch('browser_calls_flask.views.CapabilityToken', return_value=mock_capability) as mock:
+        with patch('browser_calls_flask.views.ClientCapabilityToken', return_value=mock_capability) as mock:
             response = self.client.get('/support/token', query_string={'forPage': '/dashboard'})
 
         # Then

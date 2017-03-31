@@ -3,8 +3,8 @@ from . import app, db
 from .forms import SupportTicketForm
 from .models import SupportTicket
 
-from twilio.jwt.client import CapabilityToken
-from twilio import twiml
+from twilio.jwt.client import ClientCapabilityToken
+from twilio.twiml.voice_response import VoiceResponse, Dial
 
 
 @app.route('/')
@@ -36,7 +36,7 @@ def dashboard():
 def get_token():
     """Returns a Twilio Client token"""
     # Create a TwilioCapability object with our Twilio API credentials
-    capability = CapabilityToken(
+    capability = ClientCapabilityToken(
         app.config['TWILIO_ACCOUNT_SID'],
         app.config['TWILIO_AUTH_TOKEN'])
 
@@ -61,16 +61,16 @@ def get_token():
 @app.route('/support/call', methods=['POST'])
 def call():
     """Returns TwiML instructions to Twilio's POST requests"""
-    response = twiml.Response()
+    response = VoiceResponse()
 
-    with response.dial(callerId=app.config['TWILIO_NUMBER']) as dial:
-        # If the browser sent a phoneNumber param, we know this request
-        # is a support agent trying to call a customer's phone
-        if 'phoneNumber' in request.form:
-            dial.number(request.form['phoneNumber'])
-        else:
-            # Otherwise we assume this request is a customer trying
-            # to contact support from the home page
-            dial.client('support_agent')
+    dial = Dial(callerId=app.config['TWILIO_NUMBER'])
+    # If the browser sent a phoneNumber param, we know this request
+    # is a support agent trying to call a customer's phone
+    if 'phoneNumber' in request.form:
+        dial.number(request.form['phoneNumber'])
+    else:
+        # Otherwise we assume this request is a customer trying
+        # to contact support from the home page
+        dial.client('support_agent')
 
-    return str(response)
+    return str(response.append(dial))
