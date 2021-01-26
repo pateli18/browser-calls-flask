@@ -18,6 +18,7 @@ jobs:
 
     env:
       FLASK_ENV: testing
+      SECRET_KEY: no-secret
     steps:
     - uses: actions/checkout@v2
     - name: Set up Python ${{ matrix.python-version }}

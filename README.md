@@ -4,7 +4,7 @@
 
 # Browser Calls for Python - Flask
 
-[![Build Status](https://travis-ci.org/TwilioDevEd/browser-calls-flask.svg?branch=master)](https://travis-ci.org/TwilioDevEd/browser-calls-flask)
+![Flask](https://github.com/TwilioDevEd/browser-calls-flask/workflows/Flask/badge.svg)
 
 Learn how to use [Twilio Client](https://www.twilio.com/client) to make
 browser-to-phone and browser-to-browser calls with ease. The unsatisfied
