@@ -14,11 +14,6 @@ twilio
 phonenumbers
 python-dotenv
 
-# Testing
-# unittest2
-# coverage
-# mock
-
 # Development
 flake8
 black
