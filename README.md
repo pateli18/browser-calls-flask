@@ -4,7 +4,7 @@
 
 # Browser Calls for Python - Flask
 
-[![Build Status](https://travis-ci.org/TwilioDevEd/browser-calls-flask.svg?branch=master)](https://travis-ci.org/TwilioDevEd/browser-calls-flask)
+![Flask](https://github.com/TwilioDevEd/browser-calls-flask/workflows/Flask/badge.svg)
 
 Learn how to use [Twilio Client](https://www.twilio.com/client) to make
 browser-to-phone and browser-to-browser calls with ease. The unsatisfied
@@ -37,24 +37,17 @@ This project is built using the [Flask](http://flask.pocoo.org/) web framework. 
 
 1. To run the app locally, first clone this repository and `cd` into it.
 
-1. Create a new virtual environment.
-    - If using vanilla [virtualenv](https://virtualenv.pypa.io/en/latest/):
-
-        ```bash
-        $ virtualenv venv
-        $ source venv/bin/activate
-        ```
-
-    - If using [virtualenvwrapper](https://virtualenvwrapper.readthedocs.org/en/latest/):
-
-        ```bash
-        $ mkvirtualenv browser-calls
-        ```
-
-1. Install the requirements.
+1. Create and activate a new python3 virtual environment.
 
     ```bash
-    $ pip install -r requirements.txt
+    python3 -m venv venv
+    source venv/bin/activate
+    ```
+
+1. Install the requirements using pip.
+
+    ```bash
+    pip install -r requirements.txt
     ```
 
 1. Copy the `.env.example` file to `.env`, and edit it including your credentials
@@ -66,7 +59,7 @@ This project is built using the [Flask](http://flask.pocoo.org/) web framework. 
 1. Run the migrations.
 
     ```bash
-    $ python manage.py db upgrade
+    python manage.py db upgrade
     ```
 
 1. Modify seed data.
@@ -82,33 +75,31 @@ This project is built using the [Flask](http://flask.pocoo.org/) web framework. 
 1. Seed the database.
 
    ```bash
-   $ python manage.py dbseed
+   python manage.py dbseed
    ```
 
-1. Start ngrok
+1. Start ngrok.
 
-    To actually forward incoming calls, your development server will need to be publicly accessible.
-    [We recommend using ngrok to solve this problem](https://www.twilio.com/blog/2015/09/6-awesome-reasons-to-use-ngrok-when-testing-webhooks.html).
-
-
+   To actually forward incoming calls, your development server will need to be publicly accessible.
+   [We recommend using ngrok to solve this problem](https://www.twilio.com/blog/2015/09/6-awesome-reasons-to-use-ngrok-when-testing-webhooks.html).
+   
    ```bash
-   $ ngrok http 5000
+   ngrok http 5000
    ```
 
-    Once you have started ngrok, update your TwiML app's voice URL setting to use your ngrok hostname. It will look something like this:
+   Once you have started ngrok, update your TwiML app's voice URL setting to use your ngrok hostname. It will look something like this:
 
-    ```
-    http://88b37ada.ngrok.io/support/call
-    ```
+   ```
+   http://[your-domain].ngrok.io/support/call
+   ```
 
 1. Start the development server.
 
     ```bash
-    $ python manage.py runserver
+    python manage.py runserver
     ```
 
-Once ngrok is running, open up your browser and go to your ngrok URL. It will
-look like this: `http://88b37ada.ngrok.io`
+Once ngrok is running, open up your browser and go to your ngrok URL.
 
 That's it!
 
@@ -119,10 +110,8 @@ You can run the tests locally through [coverage](http://coverage.readthedocs.org
 1. Run the tests.
 
     ```
-    $ coverage run manage.py test
+    FLASK_ENV=testing manage.py test
     ```
-
-You can then view the results with `coverage report` or build an HTML report with `coverage html`.
 
 ## Meta
 

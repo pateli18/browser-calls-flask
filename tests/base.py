@@ -1,16 +1,14 @@
-import unittest
-from browser_calls_flask.models import SupportTicket
+from unittest import TestCase
+
+from browser_calls_flask import app, db
 
 
-class BaseTest(unittest.TestCase):
+class BaseTest(TestCase):
 
     def setUp(self):
-        from browser_calls_flask import app, db
-        self.app = app
-        self.app.config['WTF_CSRF_ENABLED'] = False
-        self.db = db
         self.client = app.test_client()
+        db.create_all()
 
     def tearDown(self):
-        SupportTicket.query.delete()
-        self.db.session.commit()
+        db.session.remove()
+        db.drop_all()

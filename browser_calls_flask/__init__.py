@@ -1,24 +1,21 @@
-from browser_calls_flask.config import config_env_files
+from browser_calls_flask.config import config_classes
 from flask import Flask
 
-from flask.ext.sqlalchemy import SQLAlchemy
+from flask_sqlalchemy import SQLAlchemy
 from flask_bootstrap import Bootstrap
 
 db = SQLAlchemy()
 
 
-def create_app(config_name='development', p_db=db):
-    new_app = Flask(__name__)
-    Bootstrap(new_app)
-    config_app(config_name, new_app)
+# create and configure the app
+app = Flask(__name__, instance_relative_config=True)
 
-    p_db.init_app(new_app)
-    return new_app
+Bootstrap(app)
 
+# load the instance config, if it exists, when not testing
+env = app.config.get('ENV', 'production')
+app.config.from_object(config_classes[env])
 
-def config_app(config_name, new_app):
-    new_app.config.from_object(config_env_files[config_name])
+db.init_app(app)
 
-app = create_app()
-
-from . import views
+from . import views  # noqa E402

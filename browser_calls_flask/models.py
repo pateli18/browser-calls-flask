@@ -6,6 +6,7 @@ from phonenumbers import PhoneNumberFormat
 
 class SupportTicket(db.Model):
     """ Represents a support ticket """
+
     __tablename__ = "tickets"
 
     id = db.Column(db.Integer, primary_key=True)
@@ -14,7 +15,7 @@ class SupportTicket(db.Model):
     description = db.Column(db.String, nullable=False)
     timestamp = db.Column(db.DateTime)
 
-    def __init__(self, name, phone_number, description):
+    def __init__(self, name, phone_number, description, *args, **kwargs):
         self.name = name
         self.phone_number = phone_number
         self.description = description
@@ -26,5 +27,4 @@ class SupportTicket(db.Model):
     @property
     def international_phone_number(self):
         parsed_number = phonenumbers.parse(self.phone_number)
-        return phonenumbers.format_number(parsed_number,
-                                          PhoneNumberFormat.INTERNATIONAL)
+        return phonenumbers.format_number(parsed_number, PhoneNumberFormat.INTERNATIONAL)

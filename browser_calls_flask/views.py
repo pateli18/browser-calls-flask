@@ -1,9 +1,11 @@
-from flask import render_template, flash, jsonify, request
+from flask import render_template, flash, jsonify, request, redirect
+from twilio.jwt.access_token import AccessToken
+from twilio.jwt.access_token.grants import VoiceGrant
+
 from . import app, db
 from .forms import SupportTicketForm
 from .models import SupportTicket
 
-from twilio.jwt.client import ClientCapabilityToken
 from twilio.twiml.voice_response import VoiceResponse, Dial
 
 
@@ -23,6 +25,8 @@ def new_ticket():
         db.session.add(ticket)
         db.session.commit()
         flash(success_message)
+        return redirect('/')
+
     return render_template('home.html', form=form)
 
 
@@ -35,27 +39,28 @@ def dashboard():
 @app.route('/support/token', methods=['GET'])
 def get_token():
     """Returns a Twilio Client token"""
-    # Create a TwilioCapability object with our Twilio API credentials
-    capability = ClientCapabilityToken(
+    identity = (
+        'support_agent' if request.args.get('forPage') == '/dashboard' else 'customer'
+    )
+
+    # Create access token with credentials
+    access_token = AccessToken(
         app.config['TWILIO_ACCOUNT_SID'],
-        app.config['TWILIO_AUTH_TOKEN'])
+        app.config['TWILIO_API_KEY'],
+        app.config['TWILIO_API_SECRET'],
+        identity=identity,
+    )
 
-    # Allow our users to make outgoing calls with Twilio Client
-    capability.allow_client_outgoing(app.config['TWIML_APPLICATION_SID'])
+    # Create a Voice grant and add to token
+    voice_grant = VoiceGrant(
+        outgoing_application_sid=app.config['TWIML_APPLICATION_SID'],
+        incoming_allow=True,  # Optional: add to allow incoming calls
+    )
+    access_token.add_grant(voice_grant)
 
-    # If the user is on the support dashboard page, we allow them to accept
-    # incoming calls to "support_agent"
-    # (in a real app we would also require the user to be authenticated)
-    if request.args.get('forPage') == '/dashboard':
-        capability.allow_client_incoming('support_agent')
-    else:
-        # Otherwise we give them a name of "customer"
-        capability.allow_client_incoming('customer')
+    token = access_token.to_jwt()
 
-    # Generate the capability token
-    token = capability.to_jwt()
-
-    return jsonify({'token': token})
+    return jsonify({'token': token.decode()})
 
 
 @app.route('/support/call', methods=['POST'])
