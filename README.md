@@ -50,12 +50,6 @@ This project is built using the [Flask](http://flask.pocoo.org/) web framework. 
     pip install -r requirements.txt
     ```
     
-    **Note:** If you're using Postgres, you will also need to run: 
-    
-    ```bash
-    pip install psycopg2
-    ```
-
 1. Copy the `.env.example` file to `.env`, and edit it including your credentials
    for the Twilio API (found at https://www.twilio.com/user/account/settings). You
    will also need a [Twilio Number](https://www.twilio.com/user/account/phone-numbers/incoming) and TwiML App SID you made above. You will also need a [SECRET_KEY](https://flask.palletsprojects.com/en/2.0.x/config/#SECRET_KEY). 
