@@ -9,6 +9,7 @@ basedir = os.path.abspath(os.path.dirname(__file__))
 prod_sqlite_uri = 'sqlite:///' + os.path.join(basedir, 'prod.sqlite')
 dev_sqlite_uri = 'sqlite:///' + os.path.join(basedir, 'dev.sqlite')
 
+
 class DefaultConfig(object):
     SECRET_KEY = os.environ.get('SECRET_KEY', 'secret-key')
     SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URI', prod_sqlite_uri)
