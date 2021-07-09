@@ -52,7 +52,7 @@ This project is built using the [Flask](http://flask.pocoo.org/) web framework. 
 
 1. Copy the `.env.example` file to `.env`, and edit it including your credentials
    for the Twilio API (found at https://www.twilio.com/user/account/settings). You
-   will also need a [Twilio Number](https://www.twilio.com/user/account/phone-numbers/incoming) and TwiML App SID you made above. You will also need a DATABASE_URI (For example, using a Postgres database called `browser-calls-flask`, the DATABASE_URI would be `postgres:///browser-calls-flask`), and a SECRET_KEY. 
+   will also need a [Twilio Number](https://www.twilio.com/user/account/phone-numbers/incoming) and TwiML App SID you made above. You will also need a [SECRET_KEY](https://flask.palletsprojects.com/en/2.0.x/config/#SECRET_KEY). 
 
 1. Run `source .env` to apply the environment variables (or even better, use [autoenv](https://github.com/kennethreitz/autoenv))
 

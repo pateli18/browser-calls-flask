@@ -9,7 +9,7 @@ basedir = os.path.abspath(os.path.dirname(__file__))
 
 class DefaultConfig(object):
     SECRET_KEY = os.environ.get('SECRET_KEY', 'secret-key')
-    SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URI')
+    SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URI', 'sqlite:///' + os.path.join(basedir, 'prod.sqlite'))
     TWILIO_ACCOUNT_SID = os.environ.get('TWILIO_ACCOUNT_SID', None)
     TWILIO_API_KEY = os.environ.get('TWILIO_API_KEY', None)
     TWILIO_API_SECRET = os.environ.get('TWILIO_API_SECRET', None)
@@ -17,6 +17,7 @@ class DefaultConfig(object):
     TWIML_APPLICATION_SID = os.environ.get('TWIML_APPLICATION_SID', None)
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     DEBUG = False
+
 
 
 class DevelopmentConfig(DefaultConfig):
