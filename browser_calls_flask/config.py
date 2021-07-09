@@ -6,10 +6,13 @@ load_dotenv()
 
 basedir = os.path.abspath(os.path.dirname(__file__))
 
+prod_sqlite_uri = 'sqlite:///' + os.path.join(basedir, 'prod.sqlite')
+dev_sqlite_uri = 'sqlite:///' + os.path.join(basedir, 'dev.sqlite')
+
 
 class DefaultConfig(object):
     SECRET_KEY = os.environ.get('SECRET_KEY', 'secret-key')
-    SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URI')
+    SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URI', prod_sqlite_uri)
     TWILIO_ACCOUNT_SID = os.environ.get('TWILIO_ACCOUNT_SID', None)
     TWILIO_API_KEY = os.environ.get('TWILIO_API_KEY', None)
     TWILIO_API_SECRET = os.environ.get('TWILIO_API_SECRET', None)
@@ -21,7 +24,7 @@ class DefaultConfig(object):
 
 class DevelopmentConfig(DefaultConfig):
     DEBUG = True
-    SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(basedir, 'dev.sqlite')
+    SQLALCHEMY_DATABASE_URI = dev_sqlite_uri
 
 
 class TestConfig(DefaultConfig):
