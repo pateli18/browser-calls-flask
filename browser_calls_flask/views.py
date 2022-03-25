@@ -1,3 +1,4 @@
+from typing import Tuple
 from flask import render_template, flash, jsonify, request, redirect
 from twilio.jwt.access_token import AccessToken
 from twilio.jwt.access_token.grants import VoiceGrant
@@ -68,14 +69,13 @@ def call():
     """Returns TwiML instructions to Twilio's POST requests"""
     response = VoiceResponse()
 
-    dial = Dial(callerId=app.config['TWILIO_NUMBER'])
-    # If the browser sent a phoneNumber param, we know this request
-    # is a support agent trying to call a customer's phone
-    if 'phoneNumber' in request.form:
-        dial.number(request.form['phoneNumber'])
-    else:
-        # Otherwise we assume this request is a customer trying
-        # to contact support from the home page
-        dial.client('support_agent')
+    dial = Dial(callerId=app.config['TWILIO_NUMBER'], record="record-from-answer-dual")
+    dial.number(request.form['phoneNumber']) #
 
     return str(response.append(dial))
+
+
+@app.route('/transcribe/{call_sid}', methods=['GET'])
+def transcribe(call_sid: str):
+    # TODO: add logic here
+    print(call_sid)
