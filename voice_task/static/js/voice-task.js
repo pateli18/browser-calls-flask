@@ -102,7 +102,7 @@ $(document).ready(function() {
 function callCustomer(phoneNumber) {
   updateCallStatus("Calling " + phoneNumber + "...");
 
-  var params = {"phoneNumber": phoneNumber};
+  var params = {"phone_number": phoneNumber};
   device.connect(params);
 }
 

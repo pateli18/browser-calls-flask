@@ -69,3 +69,5 @@ target/
 
 .env
 /venv
+
+ngrok
