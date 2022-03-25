@@ -25,13 +25,18 @@
 
 .transcript-container {
     padding: 12px;
-    background-color: #eee;
-    border: 1px solid #aaa;
+    background-color: #f3f3f3;
+    border: 1px solid #ccc;
     border-radius: 3px;
-    min-height: 200px;
+    min-height: 120px;
+    margin-bottom: 30px;
 }
 
 #transcribing {
     display: none;
     margin-left: 10px;
+}
+
+.action-form {
+    margin-bottom: 25px;
 }

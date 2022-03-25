@@ -51,7 +51,6 @@ $(document).ready(function() {
       });
 
       device.on("connect", function(conn) {
-        console.log(conn);
         // Enable the hang up button and disable the call buttons
         hangUpButton.prop("disabled", false);
         callCustomerButtons.prop("disabled", true);
@@ -73,7 +72,6 @@ $(document).ready(function() {
         hangUpButton.prop("disabled", true);
         callCustomerButtons.prop("disabled", false);
         callSupportButton.prop("disabled", false);
-        console.log(conn);
         pollForTranscript(conn.parameters.CallSid);
         updateCallStatus("Ready");
       });

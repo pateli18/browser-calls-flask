@@ -25,7 +25,6 @@
                 endCall();
             });
             $(".btn-find").click((e) => {
-                console.log(e.target);
                 btnFind(e.target);
             })
         }
@@ -34,19 +33,14 @@
             $("#startCall").hide();
             $("#onCall").show();
             $("#endCall").show();
-            let val = $("#phoneNumber").val();
-            console.log(val);
-            console.log(callCustomer);
-            // callSupport();
             callCustomer($("#phoneNumber").val());
         }
 
         function endCall() {
-            hangUp();
-            // $("#transcription-container").text("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer eget mauris id est ultricies venenatis. Sed id leo tristique, sagittis sem nec, aliquet dui. Curabitur imperdiet, leo in tincidunt condimentum, eros neque viverra elit, in placerat tellus turpis id purus. Sed id commodo eros. Nam vitae venenatis quam. Cras ut elementum eros. Morbi sed dui viverra odio vehicula sodales. Proin viverra justo tellus, non bibendum nisl eleifend ac. In sed nunc libero.");
             $("#startCall").show();
             $("#onCall").hide();
             $("#endCall").hide();
+            hangUp();
         }
 
         let pollInterval;
@@ -76,8 +70,11 @@
         function checkTranscript() {
             $("#transcribing").hide();
             $.get(`/transcribe/${transcriptId}`, (success) => {
-                if ( success ) {
-                    $("#transcription-container").val(success.text);
+                if ( success.status === "COMPLETED" ) {
+                    $("#transcription-container").val(success.results.transcripts[0]);
+                    $("#startCall").show();
+                    $("#onCall").hide();
+                    $("#endCall").hide();
                     $("#transcribing").hide();
                 }
             });
@@ -178,22 +175,22 @@
             </div>
         </div>
         <div class="main-content">
+            <div class="form-inline action-form">
+                <div class="form-group">
+                    <label for="phoneNumber">Phone Number</label>
+                    <input type="text" class="form-control" id="phoneNumber" placeholder="Enter phone number..." value="+13612326374"/>
+                </div>
+                <button id="startCall" type="submit" class="btn btn-primary">Call Number</button>
+                <button id="onCall" type="submit" class="btn btn-warning disabled">Calling...</button>
+                <button id="endCall" type="submit" class="btn btn-danger">End Call</button>
+                <span id="transcribing" class="text-danger">Transcribing...</span>
+            </div>
+            <h4>Transcription</h4>
+            <div id="transcription-container" class="transcript-container">
+
+            </div>
+            <h4>Scraped Images And Data</h4>
             <table class="table table-striped">
-                <div class="form-inline">
-                    <div class="form-group">
-                        <label for="phoneNumber">Phone Number</label>
-                        <input type="text" class="form-control" id="phoneNumber" placeholder="Enter phone number..." value="+13612326374"/>
-                    </div>
-                    <button id="startCall" type="submit" class="btn btn-primary">Call Number</button>
-                    <button id="onCall" type="submit" class="btn btn-warning disabled">Calling...</button>
-                    <button id="endCall" type="submit" class="btn btn-danger">End Call</button>
-                    <span id="transcribing" class="text-danger">Transcribing...</span>
-                </div>
-                <h4>Transcription</h4>
-                <div id="transcription-container" class="transcript-container">
-                    No transcript found.
-                </div>
-                <h4>Scraped Images And Data</h4>
                 <tbody>
                     <tr>
                         <td>00_internal_job_id</td>
