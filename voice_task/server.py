@@ -4,7 +4,7 @@ import json
 import requests
 import boto3
 import os
-from typing import List, Optional
+from typing import Dict, List, Optional
 from twilio.jwt.access_token import AccessToken
 from twilio.jwt.access_token.grants import VoiceGrant
 
@@ -45,6 +45,7 @@ class TranscriptionResult(BaseModel):
 class TranscriptionResponse(BaseModel):
     status: Status
     results: Optional[TranscriptionResult]
+    fields: Optional[Dict[str, str]]
 
 
 app = FastAPI()
