@@ -51,6 +51,10 @@
             transcriptId = id;
             setInterval(checkTranscript, 5000);
             $("#transcribing").show();
+            $("#startCall").show();
+            $("#startCall").addClass("disabled");
+            $("#onCall").hide();
+            $("#endCall").hide();
         }
 
         function btnFind(elem) {
@@ -68,14 +72,13 @@
         }
 
         function checkTranscript() {
-            $("#transcribing").hide();
             $.get(`/transcribe/${transcriptId}`, (success) => {
+                console.log(success);
                 if ( success.status === "COMPLETED" ) {
-                    $("#transcription-container").val(success.results.transcripts[0]);
-                    $("#startCall").show();
-                    $("#onCall").hide();
-                    $("#endCall").hide();
                     $("#transcribing").hide();
+                    $("#transcription-container").text(success.results.transcripts[0].transcript);
+                    $("#transcribing").hide();
+                    $("#startCall").removeClass("disabled");
                 }
             });
         }
