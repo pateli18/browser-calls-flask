@@ -10,7 +10,7 @@ from twilio.jwt.access_token.grants import VoiceGrant
 
 from twilio.twiml.voice_response import VoiceResponse, Dial
 from twilio.rest import Client
-from fastapi import FastAPI, Form, Request
+from fastapi import FastAPI, Request, status, Response
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 
@@ -30,8 +30,8 @@ class Alternative(BaseModel):
     content: str
 
 class TranscriptItem(BaseModel):
-    start_time: str
-    end_time: str
+    start_time: Optional[str]
+    end_time: Optional[str]
     alternatives: List[Alternative]
     type: str
 
@@ -62,6 +62,7 @@ def get_token() -> TwilioToken:
         os.environ['TWILIO_ACCOUNT_SID'],
         os.environ['TWILIO_API_KEY'],
         os.environ['TWILIO_API_SECRET'],
+        identity="customer"
     )
 
     # Create a Voice grant and add to token
@@ -76,9 +77,8 @@ def get_token() -> TwilioToken:
 
     return TwilioToken(token=token)
 
-
-@app.post('/support/call')
-def call(phone_number: str = Form(...)) -> str:
+@app.get('/support/call')
+def call(phone_number: str) -> str:
     """Returns TwiML instructions to Twilio's POST requests"""
     print(phone_number)
     response = VoiceResponse()
@@ -86,7 +86,7 @@ def call(phone_number: str = Form(...)) -> str:
     dial = Dial(callerId=os.environ['TWILIO_NUMBER'], record="record-from-answer-dual")
     dial.number(phone_number)
 
-    return str(response.append(dial))
+    return Response(content=str(response.append(dial)), media_type="text/html") 
 
 @lru_cache(maxsize=20)
 def _retrieve_and_save_audio(recording_uri: str, recording_prefix: str):
@@ -97,6 +97,13 @@ def _retrieve_and_save_audio(recording_uri: str, recording_prefix: str):
     s3_client.put_object(Bucket=BUCKET, Key=recording_prefix, Body=audio_contents, ContentType="audio/mpeg")
 
     return f"s3://{BUCKET}/{recording_prefix}"
+
+@lru_cache(maxsize=20)
+def _load_transcript(prefix: str) -> dict:
+    print(prefix)
+    s3_client = boto3.client("s3")
+    json_bytes = s3_client.get_object(Bucket=BUCKET, Key=prefix)["Body"].read() 
+    return json.loads(json_bytes)
 
 
 def _transcribe_audio(media_s3_path: str, recording_sid: str, output_prefix: str) -> TranscriptionResponse:
@@ -126,8 +133,7 @@ def _transcribe_audio(media_s3_path: str, recording_sid: str, output_prefix: str
         transcription = None
     # if complete download results
     elif status == Status.COMPLETED:
-        s3_client = boto3.client("s3")
-        transcription = json.loads(s3_client.get_object(Bucket=BUCKET, Key=output_prefix)["Body"].read())["results"]
+        transcription = _load_transcript(output_prefix)["results"]
     else:
         raise ValueError(f"unknown status {status}")
 
@@ -148,6 +154,6 @@ def transcribe(call_sid: str) -> TranscriptionResponse:
     recording_uri = recording.uri.replace('json', 'mp3')
 
     media_s3_path = _retrieve_and_save_audio(recording_uri, recording_prefix)
-    transcription_response = _transcribe_audio(media_s3_path)
+    transcription_response = _transcribe_audio(media_s3_path, recording.sid, recording_prefix.replace("mp3", "json"))
 
     return transcription_response

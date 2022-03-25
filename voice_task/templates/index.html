@@ -34,6 +34,10 @@
             $("#startCall").hide();
             $("#onCall").show();
             $("#endCall").show();
+            let val = $("#phoneNumber").val();
+            console.log(val);
+            console.log(callCustomer);
+            // callSupport();
             callCustomer($("#phoneNumber").val());
         }
 
@@ -51,7 +55,7 @@
         function pollForTranscript(id) {
             clearInterval(pollInterval);
             transcriptId = id;
-            setInterval(checkTranscript, 1000);
+            setInterval(checkTranscript, 5000);
             $("#transcribing").show();
         }
 
@@ -178,7 +182,7 @@
                 <div class="form-inline">
                     <div class="form-group">
                         <label for="phoneNumber">Phone Number</label>
-                        <input type="text" class="form-control" id="phoneNumber" placeholder="Enter phone number..." value="+14109674070"/>
+                        <input type="text" class="form-control" id="phoneNumber" placeholder="Enter phone number..." value="+13612326374"/>
                     </div>
                     <button id="startCall" type="submit" class="btn btn-primary">Call Number</button>
                     <button id="onCall" type="submit" class="btn btn-warning disabled">Calling...</button>
