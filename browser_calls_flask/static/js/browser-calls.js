@@ -72,7 +72,7 @@ $(document).ready(function() {
         hangUpButton.prop("disabled", true);
         callCustomerButtons.prop("disabled", false);
         callSupportButton.prop("disabled", false);
-
+        pollForTranscript(conn.parameters.CallSid);
         updateCallStatus("Ready");
       });
 

@@ -1,0 +1,37 @@
+.sidebar {
+    position: fixed;
+    left: 0;
+    width: 450px;
+    padding: 20px;
+}
+
+.main-content {
+    margin-left: 450px;
+    border-left: 1px solid #999;
+    padding: 20px;
+}
+
+.input-container {
+    margin-top: 30px;
+}
+
+#endCall {
+    display: none;
+}
+
+#onCall {
+    display: none;
+}
+
+.transcript-container {
+    padding: 12px;
+    background-color: #eee;
+    border: 1px solid #aaa;
+    border-radius: 3px;
+    min-height: 200px;
+}
+
+#transcribing {
+    display: none;
+    margin-left: 10px;
+}

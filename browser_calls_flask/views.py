@@ -12,7 +12,7 @@ from twilio.twiml.voice_response import VoiceResponse, Dial
 @app.route('/')
 def root():
     form = SupportTicketForm()
-    return render_template('home.html', form=form)
+    return render_template('index.html', form=form)
 
 
 @app.route('/tickets', methods=['GET', 'POST'])
